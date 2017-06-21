@@ -271,9 +271,17 @@ mode "$mode_display" {
 bindsym $mod+x mode "$mode_display"
 
 # Sreen brightness controls
-bindsym XF86AudioRaiseVolume exec amixer -c 0 set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -c 0 set Master 5%-
-bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- unmute
+bindsym XF86AudioMute exec amixer set Master toggle
+
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+#bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
+
+#bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 1 +5%"
+#bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 1 -5%"
+#bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 1 toggle"
 
 bindsym XF86BrightnessUp exec xbacklight + 10
 bindsym XF86BrightnessDown exec xbacklight - 10
@@ -291,3 +299,4 @@ bindsym XF86AudioPrev exec "playerctl previous"
 
 # Power management
 exec_always --no-startup-id xfce4-power-manager
+exec_always --no-startup-id blueman-applet

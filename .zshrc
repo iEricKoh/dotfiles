@@ -98,7 +98,11 @@ screenfetch
 #export http_proxy=127.0.0.1:8118
 
 export ANDROID_SDK=/opt/android-sdk
+export android_ndk=/opt/android-ndk-r10e
 export ANDROID_HOME=/opt/android-sdk
 #export ANDROID_SDK_HOME=/opt/android-sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export PATH=${PATH}:${ANDROID_NDK}
+export PATH=${PATH}:$(ruby -e 'print Gem.user_dir')/bin
+export GEM_HOME=$(ruby -e 'print Gem.user_dir')
