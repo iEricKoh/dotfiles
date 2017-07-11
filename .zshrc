@@ -7,7 +7,8 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="dracula"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -106,3 +107,5 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=${PATH}:${ANDROID_NDK}
 export PATH=${PATH}:$(ruby -e 'print Gem.user_dir')/bin
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+export VMWARE_USE_SHIPPED_LIBS='yes'
+export VMWARE_USE_SHIPPED_LIBS='yes'
