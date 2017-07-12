@@ -290,7 +290,8 @@ bindsym XF86BrightnessDown exec xbacklight - 10
 bindsym $mod+n exec thunar
 #bindsym $mod+Control+l exec i3lock -i /home/eric/Pictures/wallpaper/arch.png
 bindsym $mod+Control+l exec i3lock-fancy -- scrot -z
-bindsym --release $mod+Control+p exec "scrot -s -q 100 '%Y-%m-%d-%T_$w_x_$h.png' -e 'mv $f ~/Pictures/screenshots/'"
+#bindsym --release $mod+Control+p exec "scrot -s -q 100 '%Y-%m-%d-%T_$w_x_$h.png' -e 'mv $f ~/Pictures/screenshots/'"
+bindsym --release $mod+Control+p exec "escrotum -s '%Y-%m-%d-%T_$w_x_$h.png' -e 'mv $f ~/Pictures/screenshots/'"
 #bindsym $mod+Control+l exec "scrot /tmp/lockscreen.png && mogrift -scale 50% -gaussian-blur 0x4 -gamma 0.8 -scale 200% /tmp/lockscreen.png && i3lock -i /tmp/lockscreen.png"
 
 bindsym XF86AudioPlay exec "playerctl play"
