@@ -44,7 +44,7 @@ cpu_avg_samples 2
 # ${mem} \
 
 TEXT
- ${upspeed wlp4s0}/s ${downspeed wlp4s0}/s \
+${upspeed wlp4s0}/s ${downspeed wlp4s0}/s \
  ${cpu cpu0}% \
  ${mem} \
  ${battery_percent}% \
