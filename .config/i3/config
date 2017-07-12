@@ -29,6 +29,7 @@ set_from_resource $white       color15 #000000
 set $black       #282828
 set $darkblack   #1d2021
 set $transparent #00000000
+set $black_transparent #00000070
 
 set $height 34
 
@@ -234,12 +235,12 @@ bar {
     #height $height
     colors {
         #statusline         $white
-        background         $transparent
+        background         $black_transparent
         separator          $transparent
 
 #       #                   BORDER       BACKGROUND   TEXT
-        focused_workspace  $transparent $transparent $darkwhite
-        inactive_workspace $transparent $transparent $white
+        focused_workspace  $black_transparent $black_transparent $darkwhite
+        inactive_workspace $black_transparent $black_transparent $white
         active_workspace   $transparent $transparent $white
         urgent_workspace   $darkred     $darkred     $transparent
         binding_mode       $darkred     $darkred     $transparent
@@ -250,7 +251,7 @@ new_window none
 hide_edge_borders both
 
 # Autostart
-exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/wallhaven-76274.jpg
+exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/785425.png
 exec --no-startup-id compton -b
 
 ## Manual management of external displays
