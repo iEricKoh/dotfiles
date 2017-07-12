@@ -26,7 +26,7 @@ URxvt.transparent:          true
 ! URxvt.urgentOnBell:         true
 ! URxvt.visualBell:           true
 URxvt.loginShell:           true
-URxvt.saveLines:            50
+URxvt.saveLines:            10000
 URxvt.internalBorder:       3
 URxvt.lineSpace:            0
 
@@ -68,6 +68,8 @@ URxvt.pointerBlank:         true
 
 !urxvt*depth: 32
 !urxvt*background: rgba:0000/0000/0200/c800
+!URxvt.background: rgba:0000/0000/0000/0000
+!URxvt.background: [10]#111122
 !URxvt.background:[20]#000000
 *background: #000000
 !*foreground: #657b83
