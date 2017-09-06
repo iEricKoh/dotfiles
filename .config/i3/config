@@ -243,7 +243,7 @@ bar {
     position top
     font pango: monaco 11
     strip_workspace_numbers yes
-    workspace_buttons no
+    #workspace_buttons no
     separator_symbol "■"
     #bindsym button4 nop
     #bindsym button5 nop

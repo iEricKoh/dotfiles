@@ -101,11 +101,25 @@ screenfetch
 export ANDROID_SDK=/opt/android-sdk
 export android_ndk=/opt/android-ndk-r10e
 export ANDROID_HOME=/opt/android-sdk
+export LOCAL_PATH=/home/eric/.local/bin
 #export ANDROID_SDK_HOME=/opt/android-sdk
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
+#export PATH=${PATH}:${HOME}/.gem/ruby/2.4.0/bin
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=${PATH}:${ANDROID_NDK}
-export PATH=${PATH}:$(ruby -e 'print Gem.user_dir')/bin
-export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+export PATH=${PATH}:${LOCAL_PATH}
+export PATH=${PATH}:~/.npm-global/bin
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+GEM_HOME=$(ls -t -U | ruby -e 'puts Gem.user_dir')
+GEM_PATH=$GEM_HOME
+export PATH=$PATH:$GEM_HOME/bin
+#export PATH=${PATH}:$(ruby -e 'print Gem.user_dir')/bin
+#export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 export VMWARE_USE_SHIPPED_LIBS='yes'
 export VMWARE_USE_SHIPPED_LIBS='yes'
+
+export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+export RUBY_BUILD_MIRROR_URL=https://cache.ruby-china.org 
+#export RBENV_VERSION=2.4.0
