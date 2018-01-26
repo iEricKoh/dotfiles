@@ -42,11 +42,12 @@ cpu_avg_samples 2
 # ${upspeed wlp4s0}/s  ${downspeed wlp4s0}/s \
 # ${cpu cpu0}% \
 # ${mem} \
+#${upspeed wlp4s0}/s ${downspeed wlp4s0}/s \
 
 TEXT
- ${upspeed wlp4s0}/s ${downspeed wlp4s0}/s \
- ${cpu cpu0}% \
- ${mem} \
- ${battery_percent}% \
-${execi 1 amixer | grep -A10 'Master' | sed -rn 's/.*\[([0-9]+%)\].*\[(on|off)\]/\2 \1/p' | sed -n '1p' | sed 's/off.*/ /' | sed -r 's/on( [01234]?[0-9]%)/\1/' | sed -r 's/(on|) 0%/ 0%/' | sed -r 's/on//'}  \
-  ${time %a}, ${time %e %b} | ${time %I:%M %p} 
+${upspeed wlp4s0}/s ${downspeed wlp4s0}/s \
+${cpu cpu0}% \
+${mem} \
+${battery_percent}% \
+${execi 1 amixer | grep -A10 'Master' | sed -rn 's/.*\[([0-9]+%)\].*\[(on|off)\]/\2 \1/p' | sed -n '1p' | sed 's/off.*/ /' | sed -r 's/on( [01234]?[0-9]%)/\1/' | sed -r 's/(on|) 0%/0%/' | sed -r 's/on//'}  \
+${time %a}, ${time %e %b} | ${time %I:%M %p} 

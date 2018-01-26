@@ -238,7 +238,8 @@ bar {
     #hidden_state hide
     #modifier Mod1
 
-    status_command conky -c ~/.config/i3/conkyrc
+    #status_command conky -c /home/eric/.config/i3/conky.conf
+    status_command conky -c ~/.config/i3/conkyrc.lua
     i3bar_command i3bar -t
     position top
     font pango: monaco 11
