@@ -95,9 +95,6 @@ fi
 
 screenfetch
 
-#export https_proxy=127.0.0.1:8118
-#export http_proxy=127.0.0.1:8118
-
 export ANDROID_SDK=/opt/android-sdk
 export android_ndk=/opt/android-ndk-r10e
 export ANDROID_HOME=/opt/android-sdk
@@ -123,3 +120,7 @@ export VMWARE_USE_SHIPPED_LIBS='yes'
 export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 export RUBY_BUILD_MIRROR_URL=https://cache.ruby-china.org 
 #export RBENV_VERSION=2.4.0
+
+export GOPATH=${HOME}/workspace/golang
+export GOBIN=${GOPATH}/bin
+export PATH=${PATH}:${GOBIN}
