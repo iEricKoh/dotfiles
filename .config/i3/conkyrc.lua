@@ -13,8 +13,8 @@ conky.config = {
 }
 
 conky.text = [[ 
- ${upspeed wlp4s0}/s \
- ${downspeed wlp4s0}/s \
+ ${upspeed wlp4s0}/s \
+ ${downspeed wlp4s0}/s \
  ${cpu cpu0}% \
  $mem/$memmax \
  ${battery_percent}% \
