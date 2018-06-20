@@ -29,7 +29,8 @@ set_from_resource $white       color15 #000000
 set $black       #282828
 set $darkblack   #1d2021
 set $transparent #00000000
-set $black_transparent #00000070
+#set $black_transparent #00000070
+set $black_transparent #00000000
 
 set $height 34
 
@@ -272,17 +273,19 @@ new_window none
 hide_edge_borders both
 
 # Autostart
-exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/785425.png
+exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/arch-linux-4k-mj.jpg
 exec --no-startup-id compton -b
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
-set $mode_display Ext Screen (v) DP ON, (h) HDMI ON, (x) DP OFF, (y) HDMI OFF
+set $mode_display Ext Screen (v) DP ON, (h) HDMI ON, (x) DP OFF, (y) HDMI OFF, (o) HDMI & DP2 ON, (c) HDMI & DP2 OFF
 mode "$mode_display" {
     bindsym v exec --no-startup-id xrandr --output DP1 --auto --right-of eDP1, mode "default"
     bindsym h exec --no-startup-id xrandr --output HDMI1 --primary --auto --right-of eDP1, mode "default"
     bindsym x exec --no-startup-id xrandr --output DP1 --auto --off, mode "default"
     bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
+    bindsym o exec --no-startup-id xrandr --output HDMI1 --primary --mode 2560x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP2 --mode 1920x1080 --pos 2240x1080 --rotate normal, mode "default"
+    bindsym c exec --no-startup-id xrandr --output HDMI1 --off --output VIRTUAL1 --off --output DP1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP2 --off, mode "default"
     #xrandr --output HDMI1 --auto --right-of eDP1
 
     # back to normal: Enter or Escape
