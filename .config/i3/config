@@ -29,8 +29,8 @@ set_from_resource $white       color15 #000000
 set $black       #282828
 set $darkblack   #1d2021
 set $transparent #00000000
-#set $black_transparent #00000070
-set $black_transparent #00000000
+set $black_transparent #00000070
+#set $black_transparent #00000000
 
 set $height 34
 
@@ -273,7 +273,7 @@ new_window none
 hide_edge_borders both
 
 # Autostart
-exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/arch-linux-4k-mj.jpg
+exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/matthew-henry-49707-unsplash.jpg
 exec --no-startup-id compton -b
 
 ## Manual management of external displays

@@ -113,5 +113,6 @@ export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 export RUBY_BUILD_MIRROR_URL=https://cache.ruby-china.org 
 
 export GOPATH=${HOME}/workspace/golang
+#export GOPATH="/home/eric/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/go"
 export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
