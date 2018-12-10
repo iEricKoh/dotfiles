@@ -7,9 +7,3 @@
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
-
-export ANDROID_HOME=${HOME}/Android/Sdk
-export ANDROID_NDK=/opt/android-ndk-r10e
-
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools

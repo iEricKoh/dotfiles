@@ -2,19 +2,25 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/eric/.oh-my-zsh
+  export ZSH="/home/eric/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="dracula"
+ZSH_THEME="agnoster"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -42,17 +48,28 @@ ZSH_THEME="dracula"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux history git-extras)
+plugins=(
+  git
+  archlinux
+  history
+  git-extras
+  dotenv
+  emoji
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,8 +77,16 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+
+#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export EDITOR='vim'
+
+export GOPATH=${HOME}/go
+export GOBIN=${GOPATH}/bin
+export PATH=${PATH}:${GOBIN}
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -84,35 +109,4 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-
-# Export vim as default editor
-export EDITOR=vim
-
-if [ -n "$DISPLAY" ]; then
-  xset b off
-fi
-
-screenfetch
-
-export ANDROID_SDK=/opt/android-sdk
-export android_ndk=/opt/android-ndk-r10e
-export ANDROID_HOME=/opt/android-sdk
-export LOCAL_PATH=/home/eric/.local/bin
-#export ANDROID_SDK_HOME=/opt/android-sdk
-export PATH=${PATH}:${HOME}/.gem/ruby/2.5.0/bin
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-export PATH=${PATH}:${ANDROID_NDK}
-export PATH=${PATH}:${LOCAL_PATH}
-export PATH=${PATH}:~/.npm-global/bin
-export VMWARE_USE_SHIPPED_LIBS='yes'
-export VMWARE_USE_SHIPPED_LIBS='yes'
-
-export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-export RUBY_BUILD_MIRROR_URL=https://cache.ruby-china.org 
-
-export GOPATH=${HOME}/workspace/golang
-#export GOPATH="/home/eric/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/go"
-export GOBIN=${GOPATH}/bin
-export PATH=${PATH}:${GOBIN}
+neofetch

@@ -1,14 +1,18 @@
 conky.config = {
     background = false,
     own_window = false,
-    double_buffer = false,
+    own_window_type = "override",
+    double_buffer = true,
     no_buffers = true,
-    out_to_x = false,
     out_to_console = true,
-    update_interval = 1.0,
+    update_interval = 1,
     total_run_times = 0,
     use_spacer = "none",
     short_units = true,
+    use_xft = true,
+    xftalpha = 1,
+    override_utf8_locale = true,
+    font = "Noto Sans",
     cpu_avg_samples = 2,
 }
 

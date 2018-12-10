@@ -1,0 +1,13 @@
+{
+  "libs": [
+    "ecma6",
+    "browser",
+    "underscore",
+    "jquery",
+    "react"
+  ],
+  "plugins": {
+    "node": {},
+    "complete_strings": {}
+  }
+}

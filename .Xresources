@@ -5,8 +5,8 @@ URxvt.preeditType: Root
 
 URxvt.inputMethod: fcitx
 
-Xft.dpi:                    96
-!Xft.dpi:                    180
+!Xft.dpi:                    96
+Xft.dpi:                    192 
 Xft.antialias:              true
 Xft.rgba:                   rgb
 Xft.hinting:                true
@@ -32,25 +32,25 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           false
-!URxvt*font: xft:Monospace:pixelsize=14
-!URxvt*boldFont: xft:Monospace:pixelsize=14
-!URxvt.font: xft:Inconsolata for Powerline:size=13:style=Medium
-!URxvt*font: xft:Terminus:size=12,xft:Inconsolata\ for\ Powerline:size=12
+!URxvt.font: xft:Monaco:size=11,xft:Inconsolata for Powerline:size=10
 URxvt.font: xft:Monaco:size=11,xft:Noto Sans Mono CJK SC:size=14:antialias=true:hinting=true,xft:DejaVuSansMono for Powerline:size=10
 
 !URxvt.font: xft:Noto Sans Mono CJK SC:pixelsize=16:antialias=true:hinting=true,xft:Monaco: size=11,xft:Source Code Pro for Powerline:pixelsize=16:antialias=true:hinting=true,xft:IPAGothic:pixelsize=16:antialias=true:hinting=true
 
 ! Fix font space
-URxvt*letterSpace: -1
+!URxvt*letterSpace: 0
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Perl extensions
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.iso14755: False
-URxvt.perl-ext-common: default,matcher,clipboard,keyboard-select
+URxvt.perl-ext-common: default,matcher,keyboard-select
+!clipboard,
 URxvt.matcher.button:       1
 URxvt.urlLauncher:          google-chrome-stable
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
@@ -67,11 +67,10 @@ URxvt.pointerBlank:         true
 !!Source http://github.com/altercation/solarized
 
 !urxvt*depth: 32
-!urxvt*background: rgba:0000/0000/0200/c800
-!URxvt.background: rgba:0000/0000/0000/0000
+urxvt*background: rgba:0000/0000/0200/c600
 !URxvt.background: [10]#111122
 !URxvt.background:[20]#000000
-*background: #000000
+!*background: #000000
 !*foreground: #657b83
 *foreground: #ffffff
 !!*fading: 40
