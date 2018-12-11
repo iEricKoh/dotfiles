@@ -292,7 +292,7 @@ bindsym $mod+x mode "$mode_display"
 # Sreen brightness controls
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer set Master 5%- unmute
-bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 #bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
