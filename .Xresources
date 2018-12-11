@@ -49,12 +49,10 @@ URxvt.scrollBar:            false
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.iso14755: False
-URxvt.perl-ext-common: default,matcher,keyboard-select
-!clipboard,
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          google-chrome-stable
+URxvt.perl-ext-common: default,matcher,clipboard,keyboard-select
+URxvt.matcher.button: 1
+URxvt.urlLauncher: google-chrome-stable
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!URxvt.keysym.M-s: perl:keyboard-select:search
 
 ! Cursor
 URxvt.cursorBlink:          true
