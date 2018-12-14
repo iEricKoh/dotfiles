@@ -278,8 +278,8 @@ mode "$mode_display" {
     bindsym h exec --no-startup-id xrandr --output HDMI1 --primary --auto --right-of eDP1, mode "default"
     bindsym x exec --no-startup-id xrandr --output DP1 --auto --off, mode "default"
     bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
-    bindsym o exec --no-startup-id xrandr --output HDMI1 --primary --mode 2560x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP2 --mode 1920x1080 --pos 2240x1080 --rotate normal, mode "default"
-    bindsym c exec --no-startup-id xrandr --output HDMI1 --off --output VIRTUAL1 --off --output DP1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP2 --off, mode "default"
+    bindsym o exec --no-startup-id xrandr --output eDP-1-1 --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-0 --mode 2560x1080 --pos 3840x0 --scale 2x2 --rotate normal --output DP-2 --off --output DP-1 --mode 1920x1080 --scale 2x2 --pos 4576x2160 --rotate normal --output DP-0 --off, mode "default"
+    bindsym c exec --no-startup-id xrandr --output eDP-1-1 --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-0 --off --output DP-2 --off --output DP-1 --off --output DP-0 --off, mode "default"
     #xrandr --output HDMI1 --auto --right-of eDP1
 
     # back to normal: Enter or Escape
@@ -308,7 +308,7 @@ bindsym XF86BrightnessDown exec xbacklight - 10
 # Custom shortcut
 bindsym $mod+n exec thunar
 #bindsym $mod+Control+l exec i3lock -i /home/eric/Pictures/wallpaper/arch.png
-bindsym $mod+Control+l exec i3lock-fancy -- scrot -z
+bindsym $mod+Control+l exec betterlockscreen -l dim
 #bindsym --release $mod+Control+p exec "scrot -s -q 100 '%Y-%m-%d-%T_$w_x_$h.png' -e 'mv $f ~/Pictures/screenshots/'"
 bindsym --release $mod+Control+p exec "escrotum -s '%Y-%m-%d-%T_$w_x_$h.png' -e 'mv $f ~/Pictures/screenshots/'"
 #bindsym $mod+Control+l exec "scrot /tmp/lockscreen.png && mogrift -scale 50% -gaussian-blur 0x4 -gamma 0.8 -scale 200% /tmp/lockscreen.png && i3lock -i /tmp/lockscreen.png"

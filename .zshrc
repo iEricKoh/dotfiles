@@ -10,6 +10,19 @@
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
 
+function proxy_off(){
+    unset http_proxy
+    unset https_proxy
+    echo -e "proxy disabled"
+}
+
+function proxy_on() {
+    export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+    export http_proxy="http://127.0.0.1:8118"
+    export https_proxy=$http_proxy
+    echo -e "proxy enabled"
+}
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -87,6 +100,14 @@ export EDITOR='vim'
 export GOPATH=${HOME}/go
 export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
+
+export GEM_HOME=$HOME/.gem
+export GOPATH=${HOME}/go
+export GOBIN=${GOPATH}/bin
+export PATH=${PATH}:${GOBIN}
+export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+export NPM_CONFIG_PREFIX=${HOME}/.npm-global
+export PATH=$PATH:${HOME}/.npm-global/bin
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then

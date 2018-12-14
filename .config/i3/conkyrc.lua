@@ -1,10 +1,14 @@
 conky.config = {
+    alignment = "none",
     background = false,
     own_window = false,
+    out_to_x = true,
     own_window_type = "override",
     double_buffer = true,
     no_buffers = true,
     out_to_console = true,
+    max_text_width = 0,
+    short_units = true,
     update_interval = 1,
     total_run_times = 0,
     use_spacer = "none",
@@ -13,12 +17,12 @@ conky.config = {
     xftalpha = 1,
     override_utf8_locale = true,
     font = "Noto Sans",
-    cpu_avg_samples = 2,
+    cpu_avg_samples = 6,
 }
 
 conky.text = [[ 
- ${upspeed wlp4s0}/s \
- ${downspeed wlp4s0}/s \
+ ${upspeed wlp0s20f3}/s \
+ ${downspeed wlp0s20f3}/s \
  ${cpu cpu0}% \
  $mem/$memmax \
  ${battery_percent}% \
