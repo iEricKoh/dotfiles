@@ -97,16 +97,22 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 
-export GOPATH=${HOME}/go
-export GOBIN=${GOPATH}/bin
-export PATH=${PATH}:${GOBIN}
+export JAVA_HOME=/usr/lib/jvm/java-10-openjdk
+export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.xml.bind'
 
 export GEM_HOME=$HOME/.gem
+export ANDROID_HOME=/opt/android-sdk
+
 export GOPATH=${HOME}/go
 export GOBIN=${GOPATH}/bin
+
+export NPM_CONFIG_PREFIX=${HOME}/.npm-global
+
 export PATH=${PATH}:${GOBIN}
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-export NPM_CONFIG_PREFIX=${HOME}/.npm-global
+export PATH=$PATH:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/tools/bin
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=$PATH:${HOME}/.npm-global/bin
 
 # Preferred editor for local and remote sessions
