@@ -1,8 +1,8 @@
 conky.config = {
   alignment = "top_right",
   background = false,
-  own_window = false,
-  out_to_x = true,
+  out_to_x = no,
+  own_window = no,
   own_window_type = "override",
   double_buffer = true,
   no_buffers = true,
@@ -26,7 +26,7 @@ conky.text = [[
  ${downspeed wlp0s20f3}/s \
  ${cpu cpu0}% \
  $mem/$memmax \
- ${battery_percent}% \
+ ${battery BAT0} \
 ${execi 1 amixer | grep -A10 'Master' | sed -rn 's/.*\[([0-9]+%)\].*\[(on|off)\]/\2 \1/p' | sed -n '1p' | sed 's/off.*/ /' | sed -r 's/on( [01234]?[0-9]%)/\1/' | sed -r 's/(on|) 0%/ 0%/' | sed -r 's/on//'} \
  ${time %a}, ${time %e %b} | ${time %I:%M %p} 
 ]]
