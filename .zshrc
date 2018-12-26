@@ -103,8 +103,8 @@ export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.x
 export GEM_HOME=$HOME/.gem
 export ANDROID_HOME=/opt/android-sdk
 
-export GOPATH=${HOME}/go
-export GOBIN=${GOPATH}/bin
+#export GOPATH=${HOME}/go
+#export GOBIN=${GOPATH}/bin
 
 export NPM_CONFIG_PREFIX=${HOME}/.npm-global
 
