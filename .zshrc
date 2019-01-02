@@ -117,6 +117,7 @@ export PATH=$PATH:${HOME}/.npm-global/bin
 #export QT_AUTO_SCREEN_SCALE_FACTOR=1
 #export GDK_SCALE=2
 #export GDK_DPI_SCALE=0.5
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
