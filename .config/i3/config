@@ -322,3 +322,6 @@ bindsym XF86AudioPrev exec "playerctl previous"
 exec_always --no-startup-id xfce4-power-manager
 exec_always --no-startup-id blueman-applet
 exec_always --no-startup-id /usr/lib/notify-osd-customizable/notify-osd
+
+bindsym $mod+q [urgent=latest] focus
+for_window [urgent=latest] focus

@@ -106,12 +106,12 @@ export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.x
 export GEM_HOME=$HOME/.gem
 export ANDROID_HOME=/opt/android-sdk
 
-export GOPATH=${HOME}/go
 
 export NPM_CONFIG_PREFIX=${HOME}/.npm-global
 
-#export PATH=${PATH}:${GOBIN}
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=${HOME}/go
+export PATH=${PATH}:${GOPATH}/bin
+
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export PATH=$PATH:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/tools/bin
