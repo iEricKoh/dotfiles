@@ -33,7 +33,8 @@ URxvt.lineSpace:            0
 ! Fonts
 URxvt.allow_bold:           false
 !URxvt.font: xft:Monaco:size=11,xft:Inconsolata for Powerline:size=10
-URxvt.font: xft:Monaco:size=11,xft:Noto Sans Mono CJK SC:size=14:antialias=true:hinting=true,xft:DejaVuSansMono for Powerline:size=10
+URxvt.font: xft:Monaco:size=11,xft:Noto Sans Mono CJK SC:size=14:antialias=true:hinting=true,xft:Iosevka Term:style=Light:pixelsize=18:antialias=true:hinting=true,xft:DejaVuSansMono for Powerline:size=14
+
 
 !URxvt.font: xft:Noto Sans Mono CJK SC:pixelsize=16:antialias=true:hinting=true,xft:Monaco: size=11,xft:Source Code Pro for Powerline:pixelsize=16:antialias=true:hinting=true,xft:IPAGothic:pixelsize=16:antialias=true:hinting=true
 
