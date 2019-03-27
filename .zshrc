@@ -95,7 +95,10 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-export EDITOR='vim'
+alias vimdiff='nvim -d'
+export EDITOR=nvim
+alias vim="nvim"
+alias vi="nvim"
 
 export JAVA_HOME=/usr/lib/jvm/java-10-openjdk
 export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.xml.bind'
@@ -103,12 +106,12 @@ export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.x
 export GEM_HOME=$HOME/.gem
 export ANDROID_HOME=/opt/android-sdk
 
-#export GOPATH=${HOME}/go
-#export GOBIN=${GOPATH}/bin
+export GOPATH=${HOME}/go
 
 export NPM_CONFIG_PREFIX=${HOME}/.npm-global
 
-export PATH=${PATH}:${GOBIN}
+#export PATH=${PATH}:${GOBIN}
+export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export PATH=$PATH:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/tools/bin
