@@ -96,6 +96,11 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export EDITOR='vim'
+alias vimdiff='nvim -d'
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+export EDITOR=nvim
 
 export JAVA_HOME=/usr/lib/jvm/java-10-openjdk
 export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.xml.bind'
@@ -119,6 +124,7 @@ export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+export LD_LIBRARY_PATH=/opt/genymotion:$LD_LIBRARY_PATH
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then

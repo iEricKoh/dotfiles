@@ -184,6 +184,13 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # window specific
 #for_window [class="GIMP"] floating enable
+for_window [class="wewechat"] floating enable border none
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -267,7 +274,7 @@ new_window none
 hide_edge_borders both
 
 # Autostart
-exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/oldskool-photography-167780-unsplash.jpg
+exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/alita-battle-angel-3840x2160-rosa-salazar-4k-21107.jpg
 exec --no-startup-id compton -CGb
 
 ## Manual management of external displays
@@ -325,3 +332,7 @@ exec_always --no-startup-id /usr/lib/notify-osd-customizable/notify-osd
 
 bindsym $mod+q [urgent=latest] focus
 for_window [urgent=latest] focus
+
+
+exec --no-startup-id urxvt -name scratchpad -e /usr/bin/vim
+for_window [class="URxvt" instance="scratchpad"] move scratchpad
