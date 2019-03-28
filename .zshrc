@@ -95,12 +95,11 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-export EDITOR='vim'
 alias vimdiff='nvim -d'
+export EDITOR=nvim
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
-export EDITOR=nvim
 
 export JAVA_HOME=/usr/lib/jvm/java-10-openjdk
 export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.xml.bind'
@@ -108,20 +107,20 @@ export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.x
 export GEM_HOME=$HOME/.gem
 export ANDROID_HOME=/opt/android-sdk
 
-export GOPATH=${HOME}/go
-#export GOBIN=${GOPATH}/bin
 
 export NPM_CONFIG_PREFIX=${HOME}/.npm-global
 
+export GOPATH=${HOME}/go
 export PATH=${PATH}:${GOPATH}/bin
+
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export PATH=$PATH:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/tools/bin
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=$PATH:${HOME}/.npm-global/bin
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
+#export QT_AUTO_SCREEN_SCALE_FACTOR=1
+#export GDK_SCALE=2
+#export GDK_DPI_SCALE=0.5
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 export LD_LIBRARY_PATH=/opt/genymotion:$LD_LIBRARY_PATH
@@ -143,7 +142,13 @@ export LD_LIBRARY_PATH=/opt/genymotion:$LD_LIBRARY_PATH
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+
+
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
