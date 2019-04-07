@@ -4,6 +4,10 @@
 # Path to your oh-my-zsh installation.
   export ZSH="/home/eric/.oh-my-zsh"
 
+
+export TERM=xterm-256color
+
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -110,6 +114,7 @@ export ANDROID_HOME=/opt/android-sdk
 export NPM_CONFIG_PREFIX=${HOME}/.npm-global
 
 export GOPATH=${HOME}/go
+export MYGO=${GOPATH}/src/github.com/iEricKoh
 export PATH=${PATH}:${GOPATH}/bin
 
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
