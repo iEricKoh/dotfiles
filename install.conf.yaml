@@ -1,0 +1,14 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/polybar: .config/polybar
+    ~/.config/i3: .config/i3
+    ~/.config/compton.conf: .config/compton.conf
+    ~/.zshrc: .zshrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
