@@ -240,38 +240,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#     i3bar_command i3bar -t
-#     position top
-#     status_command conky -c ~/.config/i3/conkyrc.lua
-#     font pango:Noto Sans 8, FontAwesome 10
-#     strip_workspace_numbers yes
-#     #workspace_buttons no
-#     separator_symbol "■"
-#     #bindsym button4 nop
-#     #bindsym button5 nop
-#     tray_output none
-#     #tray_output eDP1
-#     #tray_output LVDS-0
-#     #tray_padding 2
-#     #height $height
-#     colors {
-#         statusline #ffffff
-#         #statusline         #ffff00
-#         background         $black_transparent
-#         separator          $transparent
-# 
-#         #                   BORDER       BACKGROUND   TEXT
-#         focused_workspace  $black_transparent $black_transparent $darkwhite
-#         inactive_workspace $black_transparent $black_transparent $white
-#         active_workspace   $transparent $transparent $white
-#         urgent_workspace   $darkred     $darkred     $transparent
-#         binding_mode       $darkred     $darkred     $transparent
-#     }
-# }
-
 new_window none
 hide_edge_borders both
 
