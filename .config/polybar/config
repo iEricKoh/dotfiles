@@ -63,12 +63,13 @@ font-3 = Siji:pixelsize=11;1
 font-4 = FontAwesome:size=11;0
 
 ;modules-left = bspwm i3
-modules-left = mpd i3
+modules-left = spotify i3
 modules-center = 
 modules-right = xbacklight pulseaudio xkeyboard cpu memory wlan battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
+tray-maxsize = 120
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -99,6 +100,14 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python '/home/eric/.config/polybar/spotify_status.py' -f '{song}'
+format-underline = #1db954
 
 [module/bspwm]
 type = internal/bspwm
