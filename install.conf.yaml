@@ -6,17 +6,22 @@
 - clean: ['~']
 
 - link:
-    ~/.config/polybar: .config/polybar
-    ~/.config/i3: .config/i3
-    ~/.config/compton.conf: .config/compton.conf
-    ~/.zshrc: .zshrc
+    ~/.config/polybar: config/polybar
+    ~/.config/i3: config/i3
+    ~/.config/compton.conf: config/compton.conf
+    ~/.zshrc:
     ~/.editorconfig:
     ~/.plug_vimrc:
     ~/.vimrc:
+    ~/.ackrc:
+    ~/.bashrc:
+    ~/.gitconfig:
     ~/.config/nvim/init.vim: vimrc
     ~/.config/nvim/coc.vim: coc.vim
     ~/.config/nvim/coc-settings.json: coc-settings.json
     ~/.tern-config:
+    ~/.Xresources:
+      #~/.xinitrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
