@@ -5,9 +5,6 @@
   export ZSH="/home/eric/.oh-my-zsh"
 
 
-export TERM=xterm-256color
-
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -110,7 +107,6 @@ export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.x
 export GEM_HOME=$HOME/.gem
 export ANDROID_HOME=/opt/android-sdk
 
-
 export NPM_CONFIG_PREFIX=${HOME}/.npm-global
 
 export GOPATH=${HOME}/go
@@ -119,9 +115,10 @@ export PATH=${PATH}:${GOPATH}/bin
 
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export PATH=$PATH:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/tools/bin
+export PATH=$PATH:${ANDROID_HOME}/build-tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=$PATH:${HOME}/.npm-global/bin
+export PATH=$PATH:${HOME}/.pub-cache/bin
 #export QT_AUTO_SCREEN_SCALE_FACTOR=1
 #export GDK_SCALE=2
 #export GDK_DPI_SCALE=0.5
@@ -151,8 +148,21 @@ if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 fi
 
 
+export XDG_CONFIG_HOME=$HOME/.config
+
+
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 neofetch
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
