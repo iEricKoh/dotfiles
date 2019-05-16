@@ -28,11 +28,11 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/mybar]
-dpi = 192
+;dpi = 192
 monitor = ${env:MONITOR:}
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 42
+height = 24
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -56,7 +56,7 @@ module-margin-right = 2
 ;font-0 = fixed:pixelsize=11;1
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ;font-2 = siji:pixelsize=11;1
-font-0 = NotoSans-Regular:size=11;0
+font-0 = NotoSans-Regular:size=10;0
 font-1 = Material\ Icons:size=12;2
 font-2 = xos4\ Terminus:size=14;0
 font-3 = Siji:pixelsize=11;1
@@ -69,7 +69,7 @@ modules-right = xbacklight pulseaudio xkeyboard cpu memory wlan battery temperat
 
 tray-position = right
 tray-padding = 2
-tray-maxsize = 120
+;tray-maxsize = 120
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
