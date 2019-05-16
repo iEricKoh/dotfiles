@@ -99,9 +99,11 @@ bindsym $mod+Return exec i3-sensible-terminal -sh 25
 # kill focused window
 bindsym $mod+Shift+q kill
 
+#bindsym $mod+d exec --no-startup-id "rofi -show-icons -combi-modi window,drun,run,ssh -show combi -modi combi"
+
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -240,41 +242,41 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    i3bar_command i3bar -t
-    position top
-    status_command conky -c ~/.config/i3/conkyrc.lua
-    font pango:Noto Sans 8, FontAwesome 10
-    strip_workspace_numbers yes
-    #workspace_buttons no
-    separator_symbol "■"
-    #bindsym button4 nop
-    #bindsym button5 nop
-    tray_output none
-    #tray_output eDP1
-    #tray_output LVDS-0
-    #tray_padding 2
-    #height $height
-    colors {
-        statusline #ffffff
-        #statusline         #ffff00
-        background         $black_transparent
-        separator          $transparent
-
-        #                   BORDER       BACKGROUND   TEXT
-        focused_workspace  $black_transparent $black_transparent $darkwhite
-        inactive_workspace $black_transparent $black_transparent $white
-        active_workspace   $transparent $transparent $white
-        urgent_workspace   $darkred     $darkred     $transparent
-        binding_mode       $darkred     $darkred     $transparent
-    }
-}
+# bar {
+#     i3bar_command i3bar -t
+#     position top
+#     status_command conky -c ~/.config/i3/conkyrc.lua
+#     font pango:Noto Sans 8, FontAwesome 10
+#     strip_workspace_numbers yes
+#     #workspace_buttons no
+#     separator_symbol "■"
+#     #bindsym button4 nop
+#     #bindsym button5 nop
+#     tray_output none
+#     #tray_output eDP1
+#     #tray_output LVDS-0
+#     #tray_padding 2
+#     #height $height
+#     colors {
+#         statusline #ffffff
+#         #statusline         #ffff00
+#         background         $black_transparent
+#         separator          $transparent
+# 
+#         #                   BORDER       BACKGROUND   TEXT
+#         focused_workspace  $black_transparent $black_transparent $darkwhite
+#         inactive_workspace $black_transparent $black_transparent $white
+#         active_workspace   $transparent $transparent $white
+#         urgent_workspace   $darkred     $darkred     $transparent
+#         binding_mode       $darkred     $darkred     $transparent
+#     }
+# }
 
 new_window none
 hide_edge_borders both
 
 # Autostart
-exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/alita-battle-angel-3840x2160-rosa-salazar-4k-21107.jpg
+exec_always --no-startup-id feh --bg-scale /home/eric/Pictures/wallpaper/buzz-andersen-145254-unsplash.jpg
 exec --no-startup-id compton -CGb
 
 ## Manual management of external displays
@@ -336,3 +338,5 @@ for_window [urgent=latest] focus
 
 exec --no-startup-id urxvt -name scratchpad -e /usr/bin/vim
 for_window [class="URxvt" instance="scratchpad"] move scratchpad
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
