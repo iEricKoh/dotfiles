@@ -99,10 +99,10 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-alias vimdiff='nvim -d'
-export EDITOR=nvim
 alias vim="nvim"
 alias vi="nvim"
+alias v="nvim"
+alias vimdiff='nvim -d'
 
 export JAVA_HOME=/usr/lib/jvm/java-10-openjdk
 export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.xml.bind'
@@ -122,12 +122,17 @@ export PATH=$PATH:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/tools/bin
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=$PATH:${HOME}/.npm-global/bin
-#export QT_AUTO_SCREEN_SCALE_FACTOR=1
-#export GDK_SCALE=2
-#export GDK_DPI_SCALE=0.5
+#export PATH=$PATH:/opt/flutter/bin
+#export PATH="$PATH":"$HOME/.pub-cache/bin"
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+export LD_LIBRARY_PATH=/opt/genymotion:$LD_LIBRARY_PATH
 
+export EDITOR='vim'
+export XDG_CONFIG_HOME=${HOME}/.config
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -146,9 +151,9 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O 
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
+#if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+#  exec startx
+#fi
 
 
 
@@ -156,3 +161,13 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 neofetch
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
