@@ -65,7 +65,7 @@ font-4 = FontAwesome:size=11;0
 ;modules-left = bspwm i3
 modules-left = spotify i3
 modules-center = 
-modules-right = xbacklight pulseaudio xkeyboard cpu memory wlan battery temperature date
+modules-right = pulseaudio cpu memory wlan battery temperature date
 
 tray-position = none
 tray-padding = 0
