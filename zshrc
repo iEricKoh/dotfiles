@@ -122,6 +122,7 @@ export PATH=$PATH:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/tools/bin
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=$PATH:${HOME}/.npm-global/bin
+export PATH=$PATH:${HOME}/.local/bin
 #export PATH=$PATH:/opt/flutter/bin
 #export PATH="$PATH":"$HOME/.pub-cache/bin"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
