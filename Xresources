@@ -5,7 +5,6 @@ URxvt.preeditType: Root
 
 URxvt.inputMethod: fcitx
 
-!Xft.dpi:                    112
 Xft.dpi:                    192 
 Xft.antialias:              true
 Xft.rgba:                   rgb

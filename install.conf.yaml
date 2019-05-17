@@ -9,10 +9,10 @@
     ~/.config/polybar: config/polybar
     ~/.config/i3: config/i3
     ~/.config/compton.conf: config/compton.conf
-    ~/.zshrc: zshrc-x1c
-    ~/.Xresources: Xresources-x1c
-    # ~/.zshrc:
-    # ~/.Xresources: Xresources
+    # ~/.zshrc: zshrc-x1c
+    # ~/.Xresources: Xresources-x1c
+    ~/.zshrc:
+    ~/.Xresources: Xresources
     ~/.editorconfig:
     ~/.plug_vimrc:
     ~/.vimrc:
@@ -23,7 +23,8 @@
     ~/.config/nvim/coc.vim: coc.vim
     ~/.config/nvim/coc-settings.json: coc-settings.json
     ~/.tern-config:
-      #~/.xinitrc:
+    ~/.xinitrc:
+    ~/.nvidia-xinitrc: xinitrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
