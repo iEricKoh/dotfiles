@@ -5,7 +5,7 @@
   export ZSH="/home/eric/.oh-my-zsh"
 
 
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 
 # Set name of the theme to load --- if set to "random", it will
