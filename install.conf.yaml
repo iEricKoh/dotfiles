@@ -25,6 +25,7 @@
     ~/.tern-config:
     ~/.xinitrc:
     ~/.nvidia-xinitrc: xinitrc
+    ~/.config/Cerebro/plugins/package.json: config/Cerebro/plugins/package.json
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

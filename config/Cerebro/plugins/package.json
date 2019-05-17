@@ -1,0 +1,21 @@
+{
+  "name": "cerebro-plugins",
+  "dependencies": {
+    "cerebro-converter": "1.0.9",
+    "cerebro-google": "1.0.1",
+    "cerebro-math": "1.0.0",
+    "cerebro-basic-apps": "1.0.11",
+    "cerebro-linux-system": "0.2.8",
+    "cerebro-gif": "0.2.2",
+    "cerebro-shell": "0.1.7",
+    "cerebro-devdocs": "0.0.1",
+    "cerebro-mdn": "1.2.1",
+    "cerebro-caniuse": "0.0.2",
+    "cerebro-file-search": "0.1.2",
+    "cerebro-clipboard": "1.2.1",
+    "cerebro-kill": "0.1.1",
+    "cerebro-plugin-gitmoji": "0.1.2",
+    "cerebro-open-web": "1.0.0"
+  }
+}
+
