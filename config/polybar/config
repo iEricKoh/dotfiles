@@ -18,11 +18,11 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
+background = #6c000000
+background-alt = #a2000000
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
-foreground-alt = #555
+foreground-alt = #fff
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -267,13 +267,13 @@ label-muted = 
 label-muted-foreground = #666
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-0 = #00e640
+bar-volume-foreground-1 = #00e640
+bar-volume-foreground-2 = #00e640
+bar-volume-foreground-3 = #00e640
+bar-volume-foreground-4 = #00e640
+bar-volume-foreground-5 = #ffcb05
+bar-volume-foreground-6 = #f03434
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -394,6 +394,7 @@ menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
+pseudo-transparency = true
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
