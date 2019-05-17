@@ -56,8 +56,8 @@ module-margin-right = 2
 ;font-0 = fixed:pixelsize=11;1
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ;font-2 = siji:pixelsize=11;1
-font-0 = NotoSans-Regular:size=11;0
-font-1 = Material\ Icons:size=12;2
+font-0 = Noto Sans:style=Regular:size=10;0
+font-1 = Material\ Icons:size=13;2
 font-2 = xos4\ Terminus:size=14;0
 font-3 = Siji:pixelsize=11;1
 font-4 = FontAwesome:size=11;0
@@ -65,7 +65,7 @@ font-4 = FontAwesome:size=11;0
 ;modules-left = bspwm i3
 modules-left = spotify i3
 modules-center = 
-modules-right = xbacklight pulseaudio xkeyboard cpu memory wlan battery temperature date powermenu
+modules-right = xbacklight pulseaudio xkeyboard cpu memory wlan battery temperature date
 
 tray-position = none
 tray-padding = 0
@@ -207,7 +207,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #7befb2
+format-underline = #6bb9f0
 label = %percentage:2%%
 
 [module/memory]
@@ -252,7 +252,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = #7befb2
 
 label = %date% %time%
 
@@ -371,7 +371,7 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = #f22613
 label-close = 
 label-close-foreground = ${colors.secondary}
 label-separator = |
