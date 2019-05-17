@@ -67,8 +67,8 @@ modules-left = spotify i3
 modules-center = 
 modules-right = xbacklight pulseaudio xkeyboard cpu memory wlan battery temperature date powermenu
 
-tray-position = right
-tray-padding = 2
+tray-position = none
+tray-padding = 0
 tray-maxsize = 120
 ;tray-background = #0063ff
 
