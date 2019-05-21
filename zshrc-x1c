@@ -151,9 +151,9 @@ export XDG_CONFIG_HOME=${HOME}/.config
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-#if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-#  exec startx
-#fi
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+	exec startx
+fi
 
 
 
