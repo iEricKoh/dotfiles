@@ -49,7 +49,7 @@
     }
   },
 
-  //"coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptreact", "typescript", "typescriptreact", "json", "graphql", "javascript"],
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptreact", "typescript", "typescriptreact", "json", "graphql", "javascript", "rust"],
 
   //"go.alternateTools": {
   //  "go-langserver": "gopls", // or bingo

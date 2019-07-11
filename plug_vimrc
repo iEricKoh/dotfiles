@@ -10,6 +10,7 @@ if has('nvim')
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 endif
 
+Plug 'rust-lang/rust.vim'
 Plug 'mileszs/ack.vim'
 Plug 'dracula/vim'
 Plug 'tpope/vim-git'
