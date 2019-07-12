@@ -178,6 +178,7 @@ let g:go_textobj_include_function_doc = 1
 let g:go_highlight_generate_tags = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
+"let g:go_metalinter_autosave = 1
 "let g:go_fmt_fail_silently = 1
 
 " =============================================
