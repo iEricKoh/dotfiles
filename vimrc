@@ -150,6 +150,11 @@ autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
+
+autocmd FileType rust nmap <leader>r  :Cargo run<cr>
+autocmd FileType rust nmap <leader>c  :Cargo check<cr>
+autocmd FileType rust nmap <leader>b  :Cargo build<cr>
+
 let g:go_list_type = "quickfix"
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -402,10 +407,10 @@ let dart_html_in_string=v:true
 let dart_style_guide = 2
 
 " vim-flutter
-nnoremap <leader>fa :FlutterRun<cr>
-nnoremap <leader>fq :FlutterQuit<cr>
-nnoremap <leader>fr :FlutterHotReload<cr>
-nnoremap <leader>fR :FlutterHotRestart<cr>
+autocmd FileType dart nnoremap <leader>r :FlutterRun<cr>
+autocmd FileType dart nnoremap <leader>q :FlutterQuit<cr>
+autocmd FileType dart nnoremap <leader>h :FlutterHotReload<cr>
+autocmd FileType dart nnoremap <leader>H :FlutterHotRestart<cr>
 
 " YouCompleteMe
 " ---------------------------------------------
