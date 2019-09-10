@@ -15,7 +15,7 @@
   //"coc.preferences.diagnostic.errorSign": "✗",
   //"coc.preferences.diagnostic.warningSign": "⚡",
 
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
 
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": true,
@@ -59,7 +59,7 @@
     }
   },
 
-  //"coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptreact", "typescript", "typescriptreact", "json", "graphql", "javascript", "rust"],
+ "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptreact", "typescript", "typescriptreact", "json", "graphql", "javascript", "rust"],
 
   //"go.alternateTools": {
   //  "go-langserver": "gopls", // or bingo

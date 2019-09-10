@@ -3,3 +3,11 @@
 	name = Eric Koh
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
