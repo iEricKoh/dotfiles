@@ -154,6 +154,9 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType rust nmap <leader>r  :Cargo run<cr>
 autocmd FileType rust nmap <leader>c  :Cargo check<cr>
 autocmd FileType rust nmap <leader>b  :Cargo build<cr>
+autocmd FileType rust nmap <leader>t  :Cargo test<cr>
+autocmd FileType rust nmap <leader>u  :Cargo update<cr>
+autocmd FileType rust nmap <leader>d  :Cargo doc<cr>
 
 let g:go_list_type = "quickfix"
 " run :GoBuild or :GoTestCompile based on the go file
@@ -183,6 +186,7 @@ let g:go_textobj_include_function_doc = 1
 let g:go_highlight_generate_tags = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
+"let g:go_metalinter_autosave = 1
 "let g:go_fmt_fail_silently = 1
 
 " =============================================
