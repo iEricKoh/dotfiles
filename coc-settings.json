@@ -1,5 +1,5 @@
 {
-  "coc.preferences.formatOnType": true,
+  //"coc.preferences.formatOnType": true,
 	//"diagnostic.errorSign": "✗",
 	//"diagnostic.warningSign": "⚡",
   "diagnostic.refreshOnInsertMode": true,
@@ -10,12 +10,12 @@
   "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
   "tslint.autoFix": true,
-  "tslint.autoFixOnSave": true,
+  // "tslint.autoFixOnSave": true,
 
   //"coc.preferences.diagnostic.errorSign": "✗",
   //"coc.preferences.diagnostic.warningSign": "⚡",
 
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
 
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": true,
@@ -40,6 +40,11 @@
           "completion": {}
         }
       }
+    },
+    "rust": {
+      "command": "ra_lsp_server",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
     },
     "golang": {
       "command": "gopls",
