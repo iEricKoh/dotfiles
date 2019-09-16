@@ -158,6 +158,14 @@ autocmd FileType rust nmap <leader>t  :Cargo test<cr>
 autocmd FileType rust nmap <leader>u  :Cargo update<cr>
 autocmd FileType rust nmap <leader>d  :Cargo doc<cr>
 
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+"au FileType rust nmap gd <Plug>(rust-def)
+"au FileType rust nmap gs <Plug>(rust-def-split)
+"au FileType rust nmap gx <Plug>(rust-def-vertical)
+"au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+
 let g:go_list_type = "quickfix"
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()

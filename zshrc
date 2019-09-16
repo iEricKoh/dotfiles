@@ -125,6 +125,7 @@ export PATH=$PATH:${HOME}/.npm-global/bin
 export PATH=$PATH:${HOME}/.local/bin
 #export PATH=$PATH:/opt/flutter/bin
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH":"$HOME/.cargo/bin"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
@@ -172,3 +173,6 @@ neofetch
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib
+#export RLS_ROOT=${HOME}/git/rust/rls
