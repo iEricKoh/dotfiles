@@ -1,12 +1,10 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-if !has('nvim')
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  endif
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 
@@ -18,12 +16,83 @@ if has('nvim')
   source ~/.config/nvim/coc.vim
 endif
 
+filetype plugin indent on
 
+
+"*****************************************************************************
+"" Basic Setup
+"*****************************************************************************"
+"" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+
+" Fix backspace indent
+set backspace=indent,eol,start
+
+"" Tabs
+set tabstop=2
+set softtabstop=0
+set shiftwidth=2
+set expandtab
+
+let mapleader=","
+let maplocalleader="-"
+
+"" Enable hidden buffers
+set hidden
+
+"" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set fileformats=unix,dos,mac
+
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
+endif
+
+
+"*****************************************************************************
+"" Visual Settings
+"*****************************************************************************
+syntax on
+set ruler
+set number
+
+let no_buffers_menu=1
+silent! colorscheme dracula
+set mousemodel=popup
 set t_Co=256
+set guioptions=egmrti
+
+" always show statusline
+set laststatus=2
+
+"" Disable the blinking cursor.
+set gcr=a:blinkon0
+set scrolloff=3
+
+"" Use modeline overrides
+set modeline
+set modelines=10
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+
+
+
+
 set autoindent
 set smartindent
-set smartcase
-set encoding=UTF-8
+
 set cul
 set backupcopy=yes
 
@@ -35,20 +104,8 @@ set autoread " reload files when changed on disk
 
 set autowrite
 
-" expand tabs to spaces
-set expandtab
-
-" case-insensitive search
-set ignorecase
-
-" always show statusline
-set laststatus=2
-
 " Remove -- INSERT
 set noshowmode
-
-" Show line numbers
-set number
 
 " Set relative line number
 set relativenumber
@@ -59,48 +116,19 @@ set relativenumber
 " Enables code folding based on syntax file
 " set foldmethod=syntax
 
-" show the cursor position all the time
-set ruler
-
-" normal mode indentation commands use 2 spaces
-set shiftwidth=2
-
-" insert mode tab and backspace use 2 spaces
-set softtabstop=2
-
-" actual tabs occupy 2 characters
-set tabstop=2
-
 " show a navigable menu for tab completion
 set wildmenu
-set wildmode=longest,list,full
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" set wildmode=longest,list,full
 
 set noswapfile
 set nowritebackup
 set nobackup		" do not keep a backup file, use versions instead
 
 set history=500		" keep 50 lines of command line history
-set incsearch		" do incremental searching
-
 set vb
-
-" Switch syntax highlighting on,
-" Also switch on highlighting the last used search pattern.
-syntax on
-set hlsearch
 
 vnoremap < <v
 vnoremap > >v
-
-" our <leader> will be the space key
-let mapleader=","
-
-" our <localleader> will be the '-' key
-let maplocalleader="-"
-
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -112,8 +140,6 @@ nnoremap <silent> g, g,zz
 " CTRL-U in insert mode deletes a lot. Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
-
-filetype plugin indent on
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -133,6 +159,11 @@ autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 
 " Get correct comment highlight
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+
+"" Set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
+
 
 " Plugins
 "
@@ -154,16 +185,22 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType rust nmap <leader>r  :Cargo run<cr>
 autocmd FileType rust nmap <leader>c  :Cargo check<cr>
 autocmd FileType rust nmap <leader>b  :Cargo build<cr>
-autocmd FileType rust nmap <leader>t  :Cargo test<cr>
+autocmd FileType rust nmap <leader>ts  :Cargo test<cr>
 autocmd FileType rust nmap <leader>u  :Cargo update<cr>
 autocmd FileType rust nmap <leader>d  :Cargo doc<cr>
 
 let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
-"au FileType rust nmap gd <Plug>(rust-def)
-"au FileType rust nmap gs <Plug>(rust-def-split)
-"au FileType rust nmap gx <Plug>(rust-def-vertical)
-"au FileType rust nmap <leader>gd <Plug>(rust-doc)
+let g:rustfmt_autosave = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gv <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+" have racer as a complete soure
+"if executable('racer')
+"autocmd User asyncomplete_setup call asyncomplete#register_source(
+"    \ asyncomplete#sources#racer#get_source_options())
+"endif
 
 
 let g:go_list_type = "quickfix"
@@ -204,10 +241,28 @@ let g:EasyMotion_startofline = 0
 " Plugins
 " -----------------------------------------------------------------------
 
+" vim-preview
+autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
+autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+noremap <Leader>u :PreviewScroll -1<cr>
+noremap <leader>d :PreviewScroll +1<cr>
+
 let g:lightline#ale#indicator_checking = "\uf110 Linting..."
 let g:lightline#ale#indicator_errors = '✗ '
 let g:lightline#ale#indicator_warnings = '⚡ '
 let g:lightline#ale#indicator_ok = '✓ '
+
+" vim-gutentags
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_ctags_tagfile = '.tags'
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+if !isdirectory(s:vim_tags)
+    silent! call mkdir(s:vim_tags, 'p')
+endif
 
 " lightline.vim
 " ----------------------------------------------------
@@ -246,7 +301,7 @@ endfunction
 
 au User CocDiagnosticChange call lightline#update()
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
@@ -281,6 +336,12 @@ nnoremap <Leader>tn :TernRename<CR>
 " NERDTree
 " ---------------------------------------------
 " override default key binding
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 40
 let g:NERDTreeMapOpenVSplit='v'
 let g:NERDTreeMapOpenSplit='h'
 let g:NERDTreeMinimalUI = 1
@@ -293,7 +354,8 @@ highlight def link NERDTreeRO NERDTreeFile
 " Tagbar
 " ---------------------------------------------
 nmap <Leader>t :TagbarToggle<CR>
-"let g:tagbar_autopreview = 1
+let g:tagbar_autofocus = 1
+" let g:tagbar_autopreview = 1
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
 	\ 'kinds'     : [
@@ -390,10 +452,6 @@ let g:ale_sign_warning = '⚡'
 "let g:ale_echo_msg_warning_str = 'W'
 
 
-" dart-vim-plugin
-let dart_format_on_save = 1
-let dart_html_in_string=v:true
-
 " vim-fugitive
 " ---------------------------------------------
 nnoremap <Leader>gs :Gstatus<CR>
@@ -450,8 +508,12 @@ let g:ycm_semantic_triggers = {
 let g:powerline_pycmd= "py3"
 
 " vim-fzf
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 nmap <C-p> :Files<CR>
 nmap <C-x> :Buffers<CR>
+nmap <leader>y :History:<CR>
 let g:fzf_action = { 'ctrl-x': 'edit' }
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -509,26 +571,30 @@ endif
 " Enable ACK search
 map <c-u> :Ack<space>
 
-" Switch buffer
+" Buffer nav
 " ---------------------------------------------
-map <C-h> :bp<CR>
-map <C-l> :bn<CR>
-map <Leader>1 :1b<CR>
-map <Leader>2 :2b<CR>
-map <Leader>3 :3b<CR>
-map <Leader>4 :4b<CR>
-map <Leader>5 :5b<CR>
-map <Leader>6 :6b<CR>
-map <Leader>7 :7b<CR>
-map <Leader>8 :8b<CR>
-map <Leader>9 :9b<CR>
-map <Leader>0 :10b<CR>
+noremap <C-h> :bp<CR>
+noremap <C-l> :bn<CR>
+noremap <Leader>1 :1b<CR>
+noremap <Leader>2 :2b<CR>
+noremap <Leader>3 :3b<CR>
+noremap <Leader>4 :4b<CR>
+noremap <Leader>5 :5b<CR>
+noremap <Leader>6 :6b<CR>
+noremap <Leader>7 :7b<CR>
+noremap <Leader>8 :8b<CR>
+noremap <Leader>9 :9b<CR>
+noremap <Leader>0 :10b<CR>
+
+"" Close buffer
+noremap <leader>c :bd<CR>
 
 " Reveal file in tree view
 " ---------------------------------------------
 nnoremap <leader>e :NERDTreeFind<CR>
 
-map <Leader><Enter> :noh<CR>
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
 
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
@@ -537,7 +603,6 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 "let g:dracula_italic = 0
 let g:rehash256 = 1
 let g:dracula_colorterm=0
-colorscheme dracula
 set background=dark
 "let g:tsuquyomi_shortest_import_path = 1
 hi Cursor ctermfg=17 ctermbg=NONE cterm=NONE guifg=#282a36 guibg=NONE gui=NONE

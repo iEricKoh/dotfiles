@@ -22,8 +22,12 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-rhubarb'
-Plug '/usr/bin/fzf'
-Plug 'junegunn/fzf.vim'
+if isdirectory('/usr/bin/fzf')
+  Plug '/usr/bin/fzf' | Plug 'junegunn/fzf.vim'
+else
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
+endif
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'mattn/emmet-vim'
@@ -42,6 +46,9 @@ Plug 'thosakwe/vim-flutter'
 Plug 'tiagofumo/dart-vim-flutter-layout'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+Plug 'universal-ctags/ctags'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
 "Plug 'Chiel92/vim-autoformat'
 "Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -49,7 +56,6 @@ Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 if !has('nvim')
   Plug 'cakebaker/scss-syntax.vim', { 'for': ['css', 'less', 'scss'] }
   Plug 'Quramy/vim-js-pretty-template'
-  Plug 'majutsushi/tagbar'
   Plug 'Quramy/tsuquyomi'
   Plug 'tommcdo/vim-fubitive'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer --clang-completer --system-libclang --rust-completer' }
