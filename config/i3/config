@@ -249,13 +249,15 @@ exec --no-startup-id compton -CGb
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
+
 set $mode_display Ext Screen (v) DP ON, (h) HDMI ON, (x) DP OFF, (y) HDMI OFF, (o) HDMI & DP2 ON, (c) HDMI & DP2 OFF
 mode "$mode_display" {
     bindsym v exec --no-startup-id xrandr --output DP1 --auto --right-of eDP1, mode "default"
     bindsym h exec --no-startup-id xrandr --output HDMI1 --primary --auto --right-of eDP1, mode "default"
     bindsym x exec --no-startup-id xrandr --output DP1 --auto --off, mode "default"
     bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
-    bindsym o exec --no-startup-id xrandr --output eDP-1-1 --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-0 --mode 2560x1080 --pos 3840x0 --scale 2x2 --rotate normal --output DP-2 --off --output DP-1 --mode 1920x1080 --scale 2x2 --pos 4576x2160 --rotate normal --output DP-0 --off, mode "default"
+    bindsym o exec --no-startup-id xrandr --output eDP-1-1 --mode 3840x2160 --pos 0x2160 --rotate normal --output HDMI-0 --mode 2560x1080 --pos 3840x1160 --scale 2x2 --rotate normal --output DP-2 --off --output DP-1 --mode 1920x1080 --scale 2x2 --pos 0x0 --rotate normal --output DP-0 --off, mode "default"
+    # bindsym o exec --no-startup-id xrandr --output eDP-1-1 --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-0 --mode 2560x1080 --pos 3840x0 --scale 2x2 --rotate normal --output DP-2 --off --output DP-1 --mode 1920x1080 --scale 2x2 --pos 4576x2160 --rotate normal --output DP-0 --off, mode "default"
     bindsym c exec --no-startup-id xrandr --output eDP-1-1 --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-0 --off --output DP-2 --off --output DP-1 --off --output DP-0 --off, mode "default"
     #xrandr --output HDMI1 --auto --right-of eDP1
 
