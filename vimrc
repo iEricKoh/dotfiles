@@ -167,6 +167,8 @@ nnoremap <leader>. :lcd %:p:h<CR>
 
 " Plugins
 "
+" coc-pairs
+autocmd FileType rust let b:coc_pairs_disabled = ["'"]
 " yats
 let g:yats_host_keyword = 1
 

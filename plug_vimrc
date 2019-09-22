@@ -31,8 +31,8 @@ endif
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'mattn/emmet-vim'
-Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-surround'
+" Plug 'Raimondi/delimitMate'
+" Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'SirVer/ultisnips'
@@ -49,17 +49,15 @@ Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 Plug 'universal-ctags/ctags'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+Plug 'tommcdo/vim-fubitive'
 
 "Plug 'Chiel92/vim-autoformat'
-"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 if !has('nvim')
   Plug 'cakebaker/scss-syntax.vim', { 'for': ['css', 'less', 'scss'] }
   Plug 'Quramy/vim-js-pretty-template'
   Plug 'Quramy/tsuquyomi'
-  Plug 'tommcdo/vim-fubitive'
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer --clang-completer --system-libclang --rust-completer' }
-  Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
   "Plugin 'ternjs/tern_for_vim', { 'do': 'npm install' }
   "Plugin 'othree/yajs.vim'
   "Plugin 'othree/es.next.syntax.vim'
