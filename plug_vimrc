@@ -50,6 +50,7 @@ Plug 'universal-ctags/ctags'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'tommcdo/vim-fubitive'
+Plug 'joshdick/onedark.vim'
 
 "Plug 'Chiel92/vim-autoformat'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }

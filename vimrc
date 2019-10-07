@@ -64,8 +64,33 @@ syntax on
 set ruler
 set number
 
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+if (has("autocmd") && !has("gui_running"))
+  augroup colorset
+    autocmd!
+    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+  augroup END
+endif
+
+let g:onedark_hide_endofbuffer=1
+let g:onedark_terminal_italics=1
+
+
 let no_buffers_menu=1
-silent! colorscheme dracula
+silent! colorscheme onedark
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
@@ -269,7 +294,7 @@ endif
 " lightline.vim
 " ----------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus' ] ],
@@ -356,7 +381,7 @@ highlight def link NERDTreeRO NERDTreeFile
 " Tagbar
 " ---------------------------------------------
 nmap <Leader>t :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
+let g:tagbar_autofocus = 0
 " let g:tagbar_autopreview = 1
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
@@ -604,16 +629,16 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " =============================================
 "let g:dracula_italic = 0
 let g:rehash256 = 1
-let g:dracula_colorterm=0
+"let g:dracula_colorterm=0
 set background=dark
 "let g:tsuquyomi_shortest_import_path = 1
-hi Cursor ctermfg=17 ctermbg=NONE cterm=NONE guifg=#282a36 guibg=NONE gui=NONE
-hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
-hi LineNr ctermfg=246 ctermbg=NONE cterm=NONE guifg=#909194 guibg=NONE gui=NONE
-hi SpecialKey ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
-hi NonText ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
-hi Pmenu ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
-hi! link Identifier DraculaGreen
+"hi Cursor ctermfg=17 ctermbg=NONE cterm=NONE guifg=#282a36 guibg=NONE gui=NONE
+"hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
+"hi LineNr ctermfg=246 ctermbg=NONE cterm=NONE guifg=#909194 guibg=NONE gui=NONE
+"hi SpecialKey ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
+"hi NonText ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
+"hi Pmenu ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
+"hi! link Identifier DraculaGreen
 
 vnoremap <silent> <leader>fs :! esformatter<CR>
 let g:jsx_ext_required = 0
