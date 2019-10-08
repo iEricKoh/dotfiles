@@ -57,6 +57,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 Plug 'majutsushi/tagbar'
 Plug 'tommcdo/vim-fubitive'
+Plug 'joshdick/onedark.vim'
 
 "Plug 'Chiel92/vim-autoformat'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
