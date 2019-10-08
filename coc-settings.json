@@ -4,6 +4,10 @@
 	//"diagnostic.warningSign": "⚡",
   "diagnostic.refreshOnInsertMode": true,
 
+  // Rust
+  "rust-client.updateOnStartup": true,
+  "rust-client.channel": "nightly",
+
   // TSLint
   "tslint.autoFixOnSave": true,
   "prettier.eslintIntegration": true,
