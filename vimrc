@@ -278,9 +278,9 @@ noremap <Leader>u :PreviewScroll -1<cr>
 noremap <leader>d :PreviewScroll +1<cr>
 
 let g:lightline#ale#indicator_checking = "\uf110 Linting..."
-let g:lightline#ale#indicator_errors = '✗ '
-let g:lightline#ale#indicator_warnings = '⚡ '
-let g:lightline#ale#indicator_ok = '✓ '
+let g:lightline#ale#indicator_errors = '✗'
+let g:lightline#ale#indicator_warnings = '⚡'
+let g:lightline#ale#indicator_ok = '✓'
 
 " vim-gutentags
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
@@ -305,8 +305,8 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus' ] ],
       \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']]
       \ },
-      "\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      "\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2"},
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3"},
       \ 'tabline': {
       \   'left': [['buffers']],
       \   'right': [[ 'exit' ]],
