@@ -88,6 +88,9 @@ if (has("autocmd") && !has("gui_running"))
   augroup END
 endif
 
+let g:lightline#bufferline#enable_devicons=1
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#unicode_symbols=1
 let g:onedark_hide_endofbuffer=1
 let g:onedark_terminal_italics=1
 

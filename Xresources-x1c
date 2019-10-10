@@ -31,10 +31,10 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           true
-URxvt*font: xft:Monaco:size=11,xft:DejaVuSansMono Nerd Font:size=11,xft:Everson Mono:size=11,xft:Noto Sans Mono CJK SC:size=14:jntialias=true:hinting=true
-URxvt*boldFont: xft:Monaco:bold:size=11,xft:DejaVuSansMono Nerd Font:size=11,xft:Everson Mono:size=11,xft:Noto Sans Mono CJK SC:size=14:jntialias=true:hinting=true
-URxvt*italicFont: xft:Monaco:italic:autohint=true:size=11,xft:DejaVuSansMono Nerd Font:size=11,xft:Everson Mono:size=11,xft:Noto Sans Mono CJK SC:size=14:jntialias=true:hinting=true
-URxvt*boldItalicFont: xft:Monaco:bold:italic:autohint=true:size=11,xft:DejaVuSansMono Nerd Font:size=11,xft:Everson Mono:size=11,xft:Noto Sans Mono CJK SC:size=14:jntialias=true:hinting=true
+URxvt*font: xft:Monaco:size=11,xft:DejaVuSansMono Nerd Font:size=11,xft:Everson Mono:size=11,xft:Noto Sans Mono CJK SC:size=14,xft:Iosevka Term:style=Light:pixelsize=38:antialias=true:hinting=true
+URxvt*boldFont: xft:Monaco:bold:size=11,xft:DejaVuSansMono Nerd Font:size=11,xft:Everson Mono:size=11,xft:Noto Sans Mono CJK SC:bold:size=14
+URxvt*italicFont: xft:Monaco:italic:autohint=true:size=11,xft:DejaVuSansMono Nerd Font:size=11,xft:Everson Mono:size=11,xft:Noto Sans Mono CJK SC:italic:size=14
+URxvt*boldItalicFont: xft:Monaco:bold:italic:autohint=true:size=11,xft:DejaVuSansMono Nerd Font:size=11,xft:Everson Mono:size=11,xft:Noto Sans Mono CJK SC:bold:italic:size=14
 
 
 !URxvt.font: xft:Noto Sans Mono CJK SC:pixelsize=16:antialias=true:hinting=true,xft:Monaco: size=11,xft:Source Code Pro for Powerline:pixelsize=16:antialias=true:hinting=true,xft:IPAGothic:pixelsize=16:antialias=true:hinting=true
