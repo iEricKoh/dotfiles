@@ -99,7 +99,7 @@ bindsym $mod+Return exec i3-sensible-terminal -sh 25
 # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec --no-startup-id "rofi -show-icons -combi-modi window,drun,run,ssh -show combi -modi combi"
+ bindsym $mod+d exec --no-startup-id "rofi -show-icons -combi-modi window,drun,run,ssh -show combi -modi combi"
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -309,5 +309,5 @@ for_window [urgent=latest] focus
 exec --no-startup-id urxvt -name scratchpad -e /usr/bin/vim
 for_window [class="URxvt" instance="scratchpad"] move scratchpad
 
-exec_always --no-startup-id cerebro
+#exec_always --no-startup-id ulauncher --hide-window
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

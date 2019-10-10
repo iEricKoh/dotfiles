@@ -36,6 +36,9 @@ set softtabstop=0
 set shiftwidth=2
 set expandtab
 
+set showtabline=2
+set guioptions-=e
+
 let mapleader=","
 let maplocalleader="-"
 
@@ -295,6 +298,8 @@ endif
 
 " lightline.vim
 " ----------------------------------------------------
+      ""\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      ""\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
 let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ 'active': {
@@ -302,25 +307,34 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus' ] ],
       \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']]
       \ },
+      \ 'tabline': {
+      \   'left': [['buffers']],
+      \   'right': [[ 'exit' ]],
+      \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
       \   'filename': 'LightlineFilename',
       \   'cocstatus': 'coc#status'
       \ },
       \ 'component_expand': {
+      \  'buffers': 'lightline#bufferline#buffers',
       \  'linter_checking': 'lightline#ale#checking',
       \  'linter_warnings': 'lightline#ale#warnings',
       \  'linter_errors': 'lightline#ale#errors',
       \  'linter_ok': 'lightline#ale#ok',
       \ },
       \ 'component_type': {
-      \   'readonly': 'error',
+      \   'buffers': 'tabsel',
+      \     'readonly': 'error',
       \     'linter_checking': 'left',
       \     'linter_warnings': 'warning',
       \     'linter_errors': 'error',
       \     'linter_ok': 'left',
       \ },
       \ }
+
+let g:lightline#bufferline#shorten_path = 1
+let g:lightline#bufferline#filename_modifier = ':t'
 
 function! LightlineFilename()
   let fname = expand('%:t')
@@ -639,7 +653,7 @@ set background=dark
 "hi LineNr ctermfg=246 ctermbg=NONE cterm=NONE guifg=#909194 guibg=NONE gui=NONE
 "hi SpecialKey ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
 "hi NonText ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
-"hi Pmenu ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
+"hi Pmenu ctermfg=145 ctermbg=NONE cterm=NONE guifg=#ABB2BF guibg=NONE gui=NONE
 "hi! link Identifier DraculaGreen
 
 vnoremap <silent> <leader>fs :! esformatter<CR>
