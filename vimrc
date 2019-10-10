@@ -298,8 +298,6 @@ endif
 
 " lightline.vim
 " ----------------------------------------------------
-      ""\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      ""\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
 let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ 'active': {
@@ -307,6 +305,8 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus' ] ],
       \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']]
       \ },
+      "\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      "\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
       \ 'tabline': {
       \   'left': [['buffers']],
       \   'right': [[ 'exit' ]],
