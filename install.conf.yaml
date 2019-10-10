@@ -26,6 +26,7 @@
     ~/.xinitrc:
     ~/.nvidia-xinitrc: xinitrc
     ~/.config/Cerebro/plugins/package.json: config/Cerebro/plugins/package.json
+    /etc/vconsole.conf: vconsole.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
