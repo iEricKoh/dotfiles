@@ -310,8 +310,7 @@ let g:lightline#bufferline#filename_modifier = ':t'
 let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus' ] ],
+      \   'left': [ ['mode', 'paste'], ['gitbranch'] ],
       \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']]
       \ },
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2"},
@@ -321,9 +320,12 @@ let g:lightline = {
       \   'right': [[ 'exit' ]],
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
+      \   'mode': 'LightlineMode',
+      \   'gitbranch': 'LightLineGitbranch',
       \   'filename': 'LightlineFilename',
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
+      \   'lineinfo': 'LightlineLineinfo',
+      \   'percent': 'LightlinePercent'
       \ },
       \ 'component_expand': {
       \  'buffers': 'lightline#bufferline#buffers',
@@ -342,11 +344,44 @@ let g:lightline = {
       \ },
       \ }
 
+function IsVisible()
+    let fname = expand('%:t')
+    let _ = &ft == 'startify' ||
+                \ &ft == 'ctrlspace' ||
+                \ &ft == 'nerdtree' ||
+                \ &ft == 'tagbar' ||
+                \ fname =~ '__Gundo'
+    return !_
+
+endfunction
+
+function LightlineReadonly()
+  return winwidth(0) > 70 ? '%R' : '' 
+endfunction
+
+function! LightlinePercent()
+  return IsVisible() ? (100 * line('.') / line('$')) . '%' : ''
+endfunction
+
+function! LightlineLineinfo()
+  return IsVisible() ? printf('%d:%-2d', line('.'), col('.')) : '' 
+endfunction
+
+function! LightlineMode()
+  let fname = expand('%:t')
+  return fname =~ '__Tagbar__' ? 'Tagbar' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ lightline#mode()
+endfunction
 
 function! LightlineFilename()
   let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
+  return fname =~ '__Tagbar__' ? 'Tagbar' :
         \ fname =~ 'NERD_tree' ?  'NERDTree' : fname
+endfunction
+
+function! LightLineGitbranch()
+  return IsVisible() ? fugitive#head() : ''
 endfunction
 
 au User CocDiagnosticChange call lightline#update()
