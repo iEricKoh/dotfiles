@@ -301,6 +301,12 @@ endif
 
 " lightline.vim
 " ----------------------------------------------------
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
+let g:lightline#bufferline#shorten_path = 1
+let g:lightline#bufferline#filename_modifier = ':t'
+
 let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ 'active': {
@@ -336,8 +342,6 @@ let g:lightline = {
       \ },
       \ }
 
-let g:lightline#bufferline#shorten_path = 1
-let g:lightline#bufferline#filename_modifier = ':t'
 
 function! LightlineFilename()
   let fname = expand('%:t')
@@ -391,6 +395,7 @@ let g:NERDTreeWinSize = 40
 let g:NERDTreeMapOpenVSplit='v'
 let g:NERDTreeMapOpenSplit='h'
 let g:NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 0
 let g:NERDTreeMarkBookmarks = 0
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeStatusLine = -1
