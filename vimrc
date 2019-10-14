@@ -272,6 +272,7 @@ let g:EasyMotion_startofline = 0
 
 " Plugins
 " -----------------------------------------------------------------------
+let g:leetcode_solution_filetype = "rust"
 
 " vim-preview
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
@@ -676,6 +677,7 @@ set background=dark
 "hi NonText ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
 "hi Pmenu ctermfg=145 ctermbg=NONE cterm=NONE guifg=#ABB2BF guibg=NONE gui=NONE
 "hi! link Identifier DraculaGreen
+highlight link CocErrorFloat         Identifier
 
 vnoremap <silent> <leader>fs :! esformatter<CR>
 let g:jsx_ext_required = 0

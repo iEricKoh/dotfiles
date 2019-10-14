@@ -5,7 +5,7 @@ else
 endif
 
 if has('nvim')
-  Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
+  "Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
   "Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 endif
@@ -18,7 +18,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-rhubarb'
@@ -49,10 +49,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ianding1/leetcode.vim'
 
-if executable('rustc')
-  Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-  Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-endif
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 
 Plug 'universal-ctags/ctags'
 Plug 'ludovicchabant/vim-gutentags'
