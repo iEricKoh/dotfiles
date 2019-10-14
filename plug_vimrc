@@ -47,6 +47,7 @@ Plug 'tiagofumo/dart-vim-flutter-layout'
 Plug 'rhysd/vim-color-spring-night'
 Plug 'joshdick/onedark.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'ianding1/leetcode.vim'
 
 if executable('rustc')
   Plug 'rust-lang/rust.vim', { 'for': 'rust' }

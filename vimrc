@@ -235,7 +235,6 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 "    \ asyncomplete#sources#racer#get_source_options())
 "endif
 
-
 let g:go_list_type = "quickfix"
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -567,31 +566,10 @@ autocmd FileType dart nnoremap <leader>q :FlutterQuit<cr>
 autocmd FileType dart nnoremap <leader>h :FlutterHotReload<cr>
 autocmd FileType dart nnoremap <leader>H :FlutterHotRestart<cr>
 
-" YouCompleteMe
-" ---------------------------------------------
 let g:go_gocode_propose_source = 1
 inoremap <C-d> <C-X><C-F>
-"let g:ycm_server_python_interpreter = '/usr/bin/python2'
-"let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_filepath_completion_use_working_dir = 0
-"let g:ycm_key_invoke_completion = '<C-x>'
-let g:ycm_complete_in_strings = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-" reset key mapping <S-tab>, conflit with delimitMate
-let g:ycm_key_list_previous_completion = ['<C-K>', '<Up>']
-let g:ycm_key_list_select_completion = ['<TAB>', '<C-J>', '<Down>']
-
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 au BufRead,BufNewFile *.scss set filetype=scss.css
-
-let g:ycm_semantic_triggers = {
-   \   'css': [ 're!^\s{2}', 're!:\s+' ],
-   \   'scss': [ 're!^\s{2}', 're!:\s+' ],
-   \   'less': [ 're!^\s{2}', 're!:\s+' ],
-   \ }
-let g:powerline_pycmd= "py3"
 
 " vim-fzf
 set wildmode=list:longest,list:full
