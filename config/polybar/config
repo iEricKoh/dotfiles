@@ -28,11 +28,11 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/mybar]
-dpi = 192
+;dpi = 192
 monitor = ${env:MONITOR:}
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 42
+height = 20
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
