@@ -99,7 +99,7 @@ bindsym $mod+Return exec i3-sensible-terminal -sh 25
 # kill focused window
 bindsym $mod+Shift+q kill
 
- bindsym $mod+d exec --no-startup-id "rofi -show-icons -combi-modi window,drun,run,ssh -show combi -modi combi"
+bindsym $mod+d exec --no-startup-id "rofi -show-icons -combi-modi window,drun,run,ssh -show combi -modi combi"
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -186,7 +186,6 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # window specific
 #for_window [class="GIMP"] floating enable
-for_window [class="wewechat"] floating enable border none
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -281,8 +280,11 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 #bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 1 -5%"
 #bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 1 toggle"
 
-bindsym XF86BrightnessUp exec xbacklight + 10
-bindsym XF86BrightnessDown exec xbacklight - 10
+#bindsym XF86BrightnessUp exec xbacklight -inc 10
+#bindsym XF86BrightnessDown exec xbacklight -dec 10
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Custom shortcut
 bindsym $mod+n exec thunar

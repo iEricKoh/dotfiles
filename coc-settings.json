@@ -7,14 +7,14 @@
   // Rust
   "rust-client.updateOnStartup": true,
   "rust-client.channel": "nightly",
+  "rust.unstable_features": true,
+  "rust.all_features": true,
 
   // TSLint
   "tslint.autoFixOnSave": true,
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
-  "tslint.autoFix": true,
-  // "tslint.autoFixOnSave": true,
 
   //"coc.preferences.diagnostic.errorSign": "✗",
   //"coc.preferences.diagnostic.warningSign": "⚡",
@@ -27,7 +27,7 @@
 
 
   "tsserver.enable": true,
-  "tsserver.orgnizeImportOnSave": false,
+  //"tsserver.orgnizeImportOnSave": false,
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "typescript.updateImportsOnFileMove.enable": false,
   "typescript.preferences.noSemicolons": true,
