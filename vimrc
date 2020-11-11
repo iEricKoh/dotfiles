@@ -565,6 +565,8 @@ autocmd FileType dart nnoremap <leader>r :FlutterRun<cr>
 autocmd FileType dart nnoremap <leader>q :FlutterQuit<cr>
 autocmd FileType dart nnoremap <leader>h :FlutterHotReload<cr>
 autocmd FileType dart nnoremap <leader>H :FlutterHotRestart<cr>
+autocmd FileType dart nnoremap <leader>dh :FlutterSplit<cr>
+autocmd FileType dart nnoremap <leader>dv :FlutterVSplit<cr>
 
 let g:go_gocode_propose_source = 1
 inoremap <C-d> <C-X><C-F>
