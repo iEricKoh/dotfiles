@@ -9,3 +9,7 @@
   interactive = auto
   ui = true
   pager = true
+[oh-my-zsh]
+	hide-dirty = 1
+[pull]
+	rebase = false

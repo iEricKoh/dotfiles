@@ -4,7 +4,8 @@ let g:coc_global_extensions = [
 \ 'coc-css', 'coc-eslint', 'coc-emmet',
 \ 'coc-gocode',
 \ 'coc-tsserver', 'coc-html', 
-\ 'coc-highlight', 'coc-snippets'
+\ 'coc-highlight', 'coc-snippets',
+\ 'coc-rls', 'coc-rust-analyzer'
 \ ]
 
 " if hidden is not set, TextEdit might fail.

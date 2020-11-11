@@ -421,7 +421,7 @@ nnoremap <Leader>tn :TernRename<CR>
 " ---------------------------------------------
 " override default key binding
 let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['.git$[[dir]]', '\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', '.swp']
+let g:NERDTreeIgnore=['.git$[[dir]]', '\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', '.swp', 'build']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
@@ -573,8 +573,8 @@ au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " vim-fzf
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,build
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'coverage/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 nmap <C-p> :Files<CR>
 nmap <C-x> :Buffers<CR>
 nmap <leader>y :History:<CR>

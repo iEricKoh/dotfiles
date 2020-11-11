@@ -12,20 +12,8 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
-
-function proxy_off(){
-    unset http_proxy
-    unset https_proxy
-    echo -e "proxy disabled"
-}
-
-function proxy_on() {
-    export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-    export http_proxy="http://127.0.0.1:8118"
-    export https_proxy=$http_proxy
-    echo -e "proxy enabled"
-}
+#ZSH_THEME="agnoster"
+#ZSH_THEME="ys"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -73,6 +61,8 @@ function proxy_on() {
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+export DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -107,34 +97,6 @@ alias vimdiff='nvim -d'
 export JAVA_HOME=/usr/lib/jvm/java-10-openjdk
 export JAVA_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" --add-modules java.xml.bind'
 
-export GEM_HOME=$HOME/.gem
-export ANDROID_HOME=/opt/android-sdk
-
-
-export NPM_CONFIG_PREFIX=${HOME}/.npm-global
-
-export GOPATH=${HOME}/go
-export MYGO=${GOPATH}/src/github.com/iEricKoh
-export PATH=${PATH}:${GOPATH}/bin
-
-export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-export PATH=$PATH:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/tools/bin
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-export PATH=$PATH:${HOME}/.npm-global/bin
-export PATH=$PATH:${HOME}/.local/bin
-#export PATH=$PATH:/opt/flutter/bin
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-export PATH="$PATH":"$HOME/.cargo/bin"
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
-export LD_LIBRARY_PATH=/opt/genymotion:$LD_LIBRARY_PATH
-
-export EDITOR='vim'
-export XDG_CONFIG_HOME=${HOME}/.config
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -166,13 +128,18 @@ neofetch
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+#[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+## tabtab source for sls package
+## uninstall by removing these lines or running `tabtab uninstall sls`
+#[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+## tabtab source for slss package
+## uninstall by removing these lines or running `tabtab uninstall slss`
+#[[ -f /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/eric/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
 
 export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib
 #export RLS_ROOT=${HOME}/git/rust/rls
+fpath=($fpath "/home/eric/.zfunctions")
+
+  # Set Spaceship ZSH as a prompt
+  autoload -U promptinit; promptinit
+  prompt pure

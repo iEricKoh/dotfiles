@@ -8,9 +8,8 @@
 - link:
     ~/.config/polybar: config/polybar
     ~/.config/i3: config/i3
+    ~/.config/sway/config: config/i3
     ~/.config/compton.conf: config/compton.conf
-    # ~/.zshrc: zshrc-x1c
-    # ~/.Xresources: Xresources-x1c
     ~/.zshrc:
     ~/.Xresources: Xresources
     ~/.editorconfig:
