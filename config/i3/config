@@ -244,7 +244,7 @@ new_window none
 hide_edge_borders both
 
 # Autostart
-exec_always --no-startup-id feh --bg-fill /home/eric/Pictures/wallpaper/Hc4ypZQ.jpg
+exec_always --no-startup-id feh --bg-fill /home/eric/Pictures/wallpaper/The-Cliffs-3-dragged.jpg
 exec --no-startup-id compton -CGb
 
 ## Manual management of external displays
