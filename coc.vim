@@ -1,26 +1,3 @@
-" Global extensions that will be installed if it's missing
-let g:coc_global_extensions = [
-\ 'coc-json',  'coc-tslint', 'coc-prettier',
-\ 'coc-css', 'coc-eslint', 'coc-emmet',
-\ 'coc-gocode',
-\ 'coc-tsserver', 'coc-html', 
-\ 'coc-highlight', 'coc-snippets',
-\ 'coc-rls', 'coc-rust-analyzer'
-\ ]
-
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -117,3 +94,16 @@ let g:coc_snippet_next = '<c-j>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
+
+let s:coc_extensions = [
+      \ 'coc-json', 'coc-prettier',
+      \ 'coc-css', 'coc-eslint', 'coc-emmet',
+      \ 'coc-gocode',
+      \ 'coc-tsserver', 'coc-html', 
+      \ 'coc-highlight', 'coc-snippets',
+      \ 'coc-rls', 'coc-rust-analyzer'
+			\]
+
+for extension in s:coc_extensions
+	call coc#add_extension(extension)
+endfor
