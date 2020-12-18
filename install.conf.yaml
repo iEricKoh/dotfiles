@@ -6,26 +6,12 @@
 - clean: ['~']
 
 - link:
-    ~/.config/polybar: config/polybar
-    ~/.config/i3: config/i3
-    ~/.config/sway/config: config/i3
-    ~/.config/compton.conf: config/compton.conf
     ~/.zshrc:
-    ~/.Xresources: Xresources
     ~/.editorconfig:
-    ~/.plug_vimrc:
-    ~/.vimrc:
     ~/.ackrc:
-    ~/.bashrc:
-    ~/.gitconfig:
-    ~/.config/nvim/init.vim: vimrc
-    ~/.config/nvim/coc.vim: coc.vim
-    ~/.config/nvim/coc-settings.json: coc-settings.json
+    ~/.SpaceVim.d/autoload/config.vim: config.vim
+    ~/.SpaceVim.d/coc-settings.json: coc-settings.json
     ~/.tern-config:
-    ~/.xinitrc:
-    ~/.nvidia-xinitrc: xinitrc
-    ~/.config/Cerebro/plugins/package.json: config/Cerebro/plugins/package.json
-    /etc/vconsole.conf: vconsole.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
