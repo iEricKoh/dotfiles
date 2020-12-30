@@ -70,23 +70,25 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
@@ -99,9 +101,9 @@ let s:coc_extensions = [
       \ 'coc-json', 'coc-prettier',
       \ 'coc-css', 'coc-eslint', 'coc-emmet',
       \ 'coc-gocode',
-      \ 'coc-tsserver', 'coc-html', 
+      \ 'coc-tsserver', 'coc-html',
       \ 'coc-highlight', 'coc-snippets',
-      \ 'coc-rls', 'coc-rust-analyzer'
+      \ 'coc-rls'
 			\]
 
 for extension in s:coc_extensions

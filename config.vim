@@ -13,8 +13,22 @@ func! config#before() abort
   let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
   let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
+  nnoremap <leader>fa :FlutterRun<cr>
+  nnoremap <leader>fq :FlutterQuit<cr>
+  nnoremap <leader>fr :FlutterHotReload<cr>
+  nnoremap <leader>fR :FlutterHotRestart<cr>
+  nnoremap <leader>fD :FlutterVisualDebug<cr>
+
+  let g:Lf_ShortcutF = '<C-P>'
+
+  let dart_html_in_string=v:true
+  let g:dart_style_guide = 2
+  let g:dart_format_on_save = 1
+
+  "let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+
+  let s:search_tools.a.command = 'ag'
 endf
 
-func! config#after() abort
-  "
-endf
+"func! config#after() abort
+"endf

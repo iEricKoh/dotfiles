@@ -1,10 +1,6 @@
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-path=('/opt/homebrew/bin' $path)
-export PATH
 # The following lines were added by compinstall
 zstyle :compinstall filename '/Users/eric/.zshrc'
 
@@ -54,6 +50,8 @@ alias vim="nvim"
 alias vi="nvim"
 alias oldvim="vim"
 
+export PATH="$PATH:/Users/eric/development/flutter/bin"
+
 #To use the bundled libc++ please add the following LDFLAGS:
 #  LDFLAGS="-L/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib"
 #
@@ -67,3 +65,37 @@ alias oldvim="vim"
 #For compilers to find llvm you may need to set:
 #  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 #  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+# For compilers to find zlib you may need to set:
+#   export LDFLAGS="-L/opt/homebrew/opt/zlib/lib"
+#   export CPPFLAGS="-I/opt/homebrew/opt/zlib/include"
+# 
+# For pkg-config to find zlib you may need to set:
+#   export PKG_CONFIG_PATH="/opt/homebrew/opt/zlib/lib/pkgconfig"
+#export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+#export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+#export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
+
+#export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+#export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+#export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+#export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+
+export DB_USER=postgres
+export DB_NAME=baopals_backend_development
+export DB_PASS=postgres
+export RDS_PASSWORD=redis
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+. /opt/homebrew/opt/asdf/asdf.sh
+
+#. /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
+#export GEM_HOME=$HOME/.gem
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+export PATH="$PATH":"$HOME/development/flutter/.pub-cache/bin"
+
+export GOPATH="${HOME}/go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"

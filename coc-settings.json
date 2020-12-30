@@ -1,14 +1,14 @@
 {
   //"coc.preferences.formatOnType": true,
-	//"diagnostic.errorSign": "✗",
-	//"diagnostic.warningSign": "⚡",
+  //"diagnostic.errorSign": "✗",
+  //"diagnostic.warningSign": "⚡",
   "diagnostic.refreshOnInsertMode": true,
 
   // Rust
-  "rust-client.updateOnStartup": true,
-  "rust-client.channel": "nightly",
-  "rust.unstable_features": true,
-  "rust.all_features": true,
+  // "rust-client.updateOnStartup": true,
+  // "rust-client.channel": "nightly",
+  // "rust.unstable_features": true,
+  // "rust.all_features": true,
 
   // TSLint
   "tslint.autoFixOnSave": true,
@@ -24,8 +24,6 @@
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": true,
 
-
-
   "tsserver.enable": true,
   //"tsserver.orgnizeImportOnSave": false,
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
@@ -34,27 +32,27 @@
   "typescript.preferences.quoteStyle": "single",
   "javascript.preferences.quoteStyle": "single",
 
-  "dart.analysisExcludedFolders": [
-    "vendor"
-  ],
+  "dart.analysisExcludedFolders": ["vendor"],
 
   "files.exclude": {
     "**/*.inject.*": true
   },
 
   "languageserver": {
-    "dart": {
-      "command": "dart_language_server", // in windows is dart_language_server.bat
-      "args": [],
-      "filetypes": ["dart"],
-      "initializationOptions": {},
-      "settings": {
-        "dart": {
-          "validation": {},
-          "completion": {}
-        }
-      }
-    },
+    //"dart": {
+    //  "command": "dart",
+    //  "args": [
+    //    // " change this to the path of analysis_server
+    //    //"/usr/local/opt/dart/libexec/bin/snapshots/analysis_server.dart.snapshot",
+    //    "--lsp",
+    //    "--client-id",
+    //    "vim",
+    //    "--client-version",
+    //    "coc.nvim"
+    //  ],
+    //  "filetypes": ["dart"],
+    //  "trace.server": "verbose"
+    //},
     //"rust": {
     //  "command": "ra_lsp_server",
     //  "filetypes": ["rust"],
@@ -68,7 +66,21 @@
     }
   },
 
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptreact", "typescript", "typescriptreact", "json", "graphql", "javascript", "rust"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "Markdown",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "graphql",
+    "javascript",
+    "rust",
+    "dart"
+  ],
+
+  "flutter.provider.hot-reload": true,
+  "flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false
 
   //"go.alternateTools": {
   //  "go-langserver": "gopls", // or bingo
