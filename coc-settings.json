@@ -5,10 +5,10 @@
   "diagnostic.refreshOnInsertMode": true,
 
   // Rust
-  // "rust-client.updateOnStartup": true,
-  // "rust-client.channel": "nightly",
-  // "rust.unstable_features": true,
-  // "rust.all_features": true,
+  "rust-client.updateOnStartup": true,
+  "rust-client.channel": "nightly",
+  "rust.unstable_features": true,
+  "rust.all_features": true,
 
   // TSLint
   "tslint.autoFixOnSave": true,

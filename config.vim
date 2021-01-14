@@ -25,6 +25,7 @@ func! config#before() abort
   let g:dart_style_guide = 2
   let g:dart_format_on_save = 1
 
+  let g:Lf_CommandMap = {'<C-X>': ['<C-H>'], '<C-]>': ['<C-S>']}
   "let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 
   let s:search_tools.a.command = 'ag'
