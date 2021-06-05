@@ -1,19 +1,28 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+call plug#begin()
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'easymotion/vim-easymotion'
+  Plug 'pangloss/vim-javascript'
+  Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'dart-lang/dart-vim-plugin'
+  Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+  Plug 'joshdick/onedark.vim'
+  Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+  Plug 'mileszs/ack.vim'
+  Plug 'kdheepak/lazygit.nvim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'Raimondi/delimitMate'
+  Plug 'tpope/vim-surround'
 
-source ~/.plug_vimrc
+call plug#end()
 
 " coc.nvim
 " ----------------------------------------------------
-if has('nvim')
-  source ~/.config/nvim/coc.vim
-endif
+source ~/.config/nvim/coc.vim
 
 filetype plugin indent on
 
@@ -52,32 +61,12 @@ set smartcase
 
 set fileformats=unix,dos,mac
 
-if exists('$SHELL')
-    set shell=$SHELL
-else
-    set shell=/bin/sh
-endif
-
-
 "*****************************************************************************
 "" Visual Settings
 "*****************************************************************************
 syntax on
 set ruler
 set number
-
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
 
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
@@ -87,20 +76,16 @@ if (has("autocmd") && !has("gui_running"))
   augroup END
 endif
 
-let g:lightline#bufferline#enable_devicons=1
-let g:lightline#bufferline#show_number  = 1
-let g:lightline#bufferline#unicode_symbols=1
 let g:onedark_hide_endofbuffer=1
 let g:onedark_terminal_italics=1
+let g:airline#extensions#tabline#enabled = 1
 
-
+let g:onedark_termcolors=256
 let no_buffers_menu=1
-silent! colorscheme onedark
+colorscheme onedark
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
-
-" always show statusline
 set laststatus=2
 
 "" Disable the blinking cursor.
@@ -115,9 +100,6 @@ set modelines=10
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
-
-
 
 
 set autoindent
@@ -154,7 +136,7 @@ set noswapfile
 set nowritebackup
 set nobackup		" do not keep a backup file, use versions instead
 
-set history=500		" keep 50 lines of command line history
+set history=1024
 set vb
 
 vnoremap < <v
@@ -268,6 +250,8 @@ let g:go_auto_sameids = 1
 " =============================================
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 let g:EasyMotion_startofline = 0
+let g:EasyMotion_smartcase = 1
+
 
 " Plugins
 " -----------------------------------------------------------------------
@@ -278,11 +262,6 @@ autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 noremap <Leader>u :PreviewScroll -1<cr>
 noremap <leader>d :PreviewScroll +1<cr>
-
-let g:lightline#ale#indicator_checking = "\uf110 Linting..."
-let g:lightline#ale#indicator_errors = '✗'
-let g:lightline#ale#indicator_warnings = '⚡'
-let g:lightline#ale#indicator_ok = '✓'
 
 " vim-gutentags
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
@@ -297,93 +276,6 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 if !isdirectory(s:gutentags_cache_dir)
     silent! call mkdir(s:gutentags_cache_dir, 'p')
 endif
-
-" lightline.vim
-" ----------------------------------------------------
-let g:unite_force_overwrite_statusline = 0
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimshell_force_overwrite_statusline = 0
-let g:lightline#bufferline#shorten_path = 1
-let g:lightline#bufferline#filename_modifier = ':t'
-
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ 'active': {
-      \   'left': [ ['mode', 'paste'], ['gitbranch'] ],
-      \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']]
-      \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2"},
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3"},
-      \ 'tabline': {
-      \   'left': [['buffers']],
-      \   'right': [[ 'exit' ]],
-      \ },
-      \ 'component_function': {
-      \   'mode': 'LightlineMode',
-      \   'gitbranch': 'LightLineGitbranch',
-      \   'filename': 'LightlineFilename',
-      \   'cocstatus': 'coc#status',
-      \   'lineinfo': 'LightlineLineinfo',
-      \   'percent': 'LightlinePercent'
-      \ },
-      \ 'component_expand': {
-      \  'buffers': 'lightline#bufferline#buffers',
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ },
-      \ 'component_type': {
-      \   'buffers': 'tabsel',
-      \     'readonly': 'error',
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ },
-      \ }
-
-function IsVisible()
-    let fname = expand('%:t')
-    let _ = &ft == 'startify' ||
-                \ &ft == 'ctrlspace' ||
-                \ &ft == 'nerdtree' ||
-                \ &ft == 'tagbar' ||
-                \ fname =~ '__Gundo'
-    return !_
-
-endfunction
-
-function LightlineReadonly()
-  return winwidth(0) > 70 ? '%R' : '' 
-endfunction
-
-function! LightlinePercent()
-  return IsVisible() ? (100 * line('.') / line('$')) . '%' : ''
-endfunction
-
-function! LightlineLineinfo()
-  return IsVisible() ? printf('%d:%-2d', line('.'), col('.')) : '' 
-endfunction
-
-function! LightlineMode()
-  let fname = expand('%:t')
-  return fname =~ '__Tagbar__' ? 'Tagbar' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ lightline#mode()
-endfunction
-
-function! LightlineFilename()
-  let fname = expand('%:t')
-  return fname =~ '__Tagbar__' ? 'Tagbar' :
-        \ fname =~ 'NERD_tree' ?  'NERDTree' : fname
-endfunction
-
-function! LightLineGitbranch()
-  return IsVisible() ? fugitive#head() : ''
-endfunction
-
-au User CocDiagnosticChange call lightline#update()
 
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " <Leader>f{char} to move to {char}
@@ -417,71 +309,8 @@ nnoremap <Leader>tr :TernRefs<CR>
 nnoremap <Leader>tn :TernRename<CR>
 "let g:tern_show_argument_hints='on_hold'
 
-" NERDTree
-" ---------------------------------------------
-" override default key binding
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['.git$[[dir]]', '\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', '.swp', 'build']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 40
-let g:NERDTreeMapOpenVSplit='v'
-let g:NERDTreeMapOpenSplit='h'
-let g:NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 0
-let g:NERDTreeMarkBookmarks = 0
-let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeStatusLine = -1
-" Custom colors for NERDTree
-highlight def link NERDTreeRO NERDTreeFile
-
-" Tagbar
-" ---------------------------------------------
-nmap <Leader>t :TagbarToggle<CR>
-let g:tagbar_autofocus = 0
-" let g:tagbar_autopreview = 1
-let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags',
-	\ 'ctagsargs' : '-sort -silent'
-\ }
-
-
-" open a NERDTree automatically when vim starts up
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 " move the cursor into the main window
 autocmd VimEnter * wincmd p
-
-" map a specific key or shortcut to open NERDTree
-map <C-e> :NERDTreeToggle<CR>
-
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " DelimitMate
 " ---------------------------------------------
@@ -561,28 +390,26 @@ let dart_html_in_string=v:true
 let dart_style_guide = 2
 
 " vim-flutter
-autocmd FileType dart nnoremap <leader>r :FlutterRun<cr>
-autocmd FileType dart nnoremap <leader>q :FlutterQuit<cr>
-autocmd FileType dart nnoremap <leader>h :FlutterHotReload<cr>
-autocmd FileType dart nnoremap <leader>H :FlutterHotRestart<cr>
-autocmd FileType dart nnoremap <leader>dh :FlutterSplit<cr>
-autocmd FileType dart nnoremap <leader>dv :FlutterVSplit<cr>
+"autocmd FileType dart nnoremap <leader>r :FlutterRun<cr>
+"autocmd FileType dart nnoremap <leader>q :FlutterQuit<cr>
+"autocmd FileType dart nnoremap <leader>h :FlutterHotReload<cr>
+"autocmd FileType dart nnoremap <leader>H :FlutterHotRestart<cr>
+"autocmd FileType dart nnoremap <leader>dh :FlutterSplit<cr>
+"autocmd FileType dart nnoremap <leader>dv :FlutterVSplit<cr>
+augroup vimrc_dart
+  au!
+  au FileType dart nnoremap <leader>fa :FlutterRun<cr>
+  au FileType dart nnoremap <leader>fq :FlutterQuit<cr>
+  au FileType dart nnoremap <leader>fr :FlutterHotReload<cr>
+  au FileType dart nnoremap <leader>fR :FlutterHotRestart<cr>
+  au FileType dart nnoremap <leader>fD :FlutterVisualDebug<cr>
+  au FileType dart nnoremap <leader>fd :FlutterSplit<cr>
+augroup END
 
 let g:go_gocode_propose_source = 1
 inoremap <C-d> <C-X><C-F>
 
 au BufRead,BufNewFile *.scss set filetype=scss.css
-
-" vim-fzf
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,build
-let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'coverage/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
-nmap <C-p> :Files<CR>
-nmap <C-x> :Buffers<CR>
-nmap <leader>y :History:<CR>
-let g:fzf_action = { 'ctrl-x': 'edit' }
-
-let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " vim-javascript
 let g:javascript_enable_domhtmlcss = 1
@@ -630,8 +457,9 @@ nnoremap <silent> <leader>cd :let @+=expand("%:p:h")<CR>
 
 " Ack.vim
 " ---------------------------------------------
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+if executable('rg')
+  "let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'rg --vimgrep --no-heading'
 endif
 
 " Enable ACK search
@@ -655,13 +483,57 @@ noremap <Leader>0 :10b<CR>
 "" Close buffer
 noremap <leader>c :bd<CR>
 
-" Reveal file in tree view
+" LazyGit
 " ---------------------------------------------
-nnoremap <leader>e :NERDTreeFind<CR>
+nnoremap <silent> <leader>lg :LazyGit<CR>
+
+
+
+" COC-explorer
+" ---------------------------------------------
+nnoremap <leader>e :CocCommand explorer<CR>
+map <C-e> :CocCommand explorer<CR>
+
+"if exists("&termguicolors") && exists("&winblend")
+"  "set termguicolors
+"  set winblend=90
+"  "set wildoptions=pum
+"  "set pumblend=5
+"endif
+
+" LeaderF
+" ----------------------------------------------------
+let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_HideHelp = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_UseCache = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+let g:Lf_UseMemoryCache = 0
+let g:Lf_StlColorscheme = 'airline'
+let g:Lf_DefaultExternalTool='rg'
+let g:Lf_GtagsAutoGenerate = 1
+"let g:Lf_CommandMap = {'<C-X>': ['<C-H>'], '<C-]>': ['<C-S>']}
+let g:Lf_PreviewResult = {
+  \ 'File': 1,
+  \ 'Buffer': 1,
+  \ 'Mru': 1,
+  \ 'Tag': 1,
+  \ 'BufTag': 1,
+  \ 'Function': 1,
+  \ 'Line': 1,
+  \ 'Colorscheme': 1,
+  \ 'Rg': 1,
+  \ 'Gtags': 0
+  \}
+
+noremap <leader>h :LeaderfSelf<cr>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
+nnoremap <leader>ev  :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Theme settings
@@ -683,3 +555,8 @@ highlight link CocErrorFloat         Identifier
 vnoremap <silent> <leader>fs :! esformatter<CR>
 let g:jsx_ext_required = 0
 let g:jsx_pragma_required = 1
+
+"set wildmenu
+"set wildmode=full
+"set pumblend=10
+"set winblend=100

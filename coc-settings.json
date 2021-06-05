@@ -2,6 +2,8 @@
   //"coc.preferences.formatOnType": true,
   //"diagnostic.errorSign": "✗",
   //"diagnostic.warningSign": "⚡",
+  "npm.binPath": "pnpm",
+
   "diagnostic.refreshOnInsertMode": true,
 
   // Rust
@@ -10,8 +12,9 @@
   "rust.unstable_features": true,
   "rust.all_features": true,
 
+  "eslint.autoFixOnSave": true,
+
   // TSLint
-  "tslint.autoFixOnSave": true,
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
@@ -19,24 +22,20 @@
   //"coc.preferences.diagnostic.errorSign": "✗",
   //"coc.preferences.diagnostic.warningSign": "⚡",
 
-  "editor.formatOnSave": true,
-
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": true,
 
   "tsserver.enable": true,
   //"tsserver.orgnizeImportOnSave": false,
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
+  "tsserver.enableJavascript": false,
   "typescript.updateImportsOnFileMove.enable": false,
-  "typescript.preferences.noSemicolons": true,
   "typescript.preferences.quoteStyle": "single",
   "javascript.preferences.quoteStyle": "single",
 
   "dart.analysisExcludedFolders": ["vendor"],
 
-  "files.exclude": {
-    "**/*.inject.*": true
-  },
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
 
   "languageserver": {
     //"dart": {
@@ -80,7 +79,9 @@
   ],
 
   "flutter.provider.hot-reload": true,
-  "flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false
+  "flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
+
+  "explorer.position": "right"
 
   //"go.alternateTools": {
   //  "go-langserver": "gopls", // or bingo

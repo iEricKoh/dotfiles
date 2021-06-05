@@ -58,7 +58,12 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Remap for do codeAction of current line
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -103,7 +108,7 @@ let s:coc_extensions = [
       \ 'coc-gocode',
       \ 'coc-tsserver', 'coc-html',
       \ 'coc-highlight', 'coc-snippets',
-      \ 'coc-rls'
+      \ 'coc-rls', 'coc-explorer'
 			\]
 
 for extension in s:coc_extensions
