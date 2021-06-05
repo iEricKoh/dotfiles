@@ -9,12 +9,12 @@ call plug#begin()
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-  Plug 'joshdick/onedark.vim'
   Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
   Plug 'mileszs/ack.vim'
   Plug 'kdheepak/lazygit.nvim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'drewtempelmeyer/palenight.vim'
   Plug 'Raimondi/delimitMate'
   Plug 'tpope/vim-surround'
 
@@ -72,17 +72,18 @@ if (has("autocmd") && !has("gui_running"))
   augroup colorset
     autocmd!
     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+    autocmd ColorScheme * call palenight#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
   augroup END
 endif
 
-let g:onedark_hide_endofbuffer=1
-let g:onedark_terminal_italics=1
+let g:palenight_hide_endofbuffer=1
+let g:palenight_terminal_italics=1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='palenight'
 
-let g:onedark_termcolors=256
+let g:palenight_termcolors=256
 let no_buffers_menu=1
-colorscheme onedark
+colorscheme palenight
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
@@ -494,12 +495,12 @@ nnoremap <silent> <leader>lg :LazyGit<CR>
 nnoremap <leader>e :CocCommand explorer<CR>
 map <C-e> :CocCommand explorer<CR>
 
-"if exists("&termguicolors") && exists("&winblend")
-"  "set termguicolors
-"  set winblend=90
-"  "set wildoptions=pum
-"  "set pumblend=5
-"endif
+if exists("&termguicolors") && exists("&winblend")
+  set termguicolors
+  set winblend=10
+  "set wildoptions=pum
+  "set pumblend=5
+endif
 
 " LeaderF
 " ----------------------------------------------------
@@ -511,7 +512,6 @@ let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu S
 let g:Lf_UseCache = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_UseMemoryCache = 0
-let g:Lf_StlColorscheme = 'airline'
 let g:Lf_DefaultExternalTool='rg'
 "let g:Lf_GtagsAutoGenerate = 1
 "let g:Lf_CommandMap = {'<C-X>': ['<C-H>'], '<C-]>': ['<C-S>']}
@@ -560,3 +560,30 @@ let g:jsx_pragma_required = 1
 "set wildmode=full
 "set pumblend=10
 "set winblend=100
+let g:Lf_StlColorscheme = 'airline'
+let g:Lf_HideHelp = 1
+let g:Lf_PopupShowStatusline=0
+let g:Lf_PopupShowFoldcolumn = 0
+"let g:Lf_PopupColorscheme = 'gruvbox_material'
+"let g:Lf_PopupWidth = 0.5
+"let g:Lf_PopupPosition = [0, &columns/4]
+let g:Lf_ReverseOrder = 1
+let g:Lf_ShowDevIcons = 0
+let g:Lf_NoChdir              = 1
+let g:Lf_AutoResize = 1
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn', '.git', '.hg', 'node_modules', '.gems', 'gems', 'target'],
+            \ 'file': ['*.sw?', '~$*', '*.bak', '*.exe', '*.o', '*.so', '*.py[co]']
+            \ }
+" let g:Lf_RgConfig = [
+"             \ '-H',
+"             \ '--no-heading',
+"             \ '--line-number',
+"             \ '--column',
+"             \ '--hidden',
+"             \ '--smart-case'
+"             \ ]
+hi def link Lf_hl_popup_inputText StatusLine
+hi def link Lf_hl_popup_window Pmenu
+hi def link Lf_hl_popup_blank StatusLine
+"hi Visual  guifg=#000000 guibg=#FFFFFF gui=none
