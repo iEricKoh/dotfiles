@@ -513,7 +513,7 @@ let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_UseMemoryCache = 0
 let g:Lf_StlColorscheme = 'airline'
 let g:Lf_DefaultExternalTool='rg'
-let g:Lf_GtagsAutoGenerate = 1
+"let g:Lf_GtagsAutoGenerate = 1
 "let g:Lf_CommandMap = {'<C-X>': ['<C-H>'], '<C-]>': ['<C-S>']}
 let g:Lf_PreviewResult = {
   \ 'File': 1,

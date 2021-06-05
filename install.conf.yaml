@@ -9,9 +9,9 @@
     ~/.zshrc:
     ~/.editorconfig:
     ~/.ackrc:
-    ~/.SpaceVim.d/autoload/config.vim: config.vim
-    ~/.SpaceVim.d/plugin/coc.vim: coc.vim
-    ~/.SpaceVim.d/coc-settings.json: coc-settings.json
+    ~/.config/nvim/init.vim: init.vim
+    ~/.config/nvim/coc.vim: coc.vim
+    ~/.config/nvim/coc-settings.json: coc-settings.json
     ~/.tern-config:
 
 - shell:
