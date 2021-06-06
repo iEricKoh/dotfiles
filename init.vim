@@ -17,7 +17,7 @@ call plug#begin()
   Plug 'drewtempelmeyer/palenight.vim'
   Plug 'Raimondi/delimitMate'
   Plug 'tpope/vim-surround'
-
+  Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 " coc.nvim
@@ -79,6 +79,11 @@ endif
 let g:palenight_hide_endofbuffer=1
 let g:palenight_terminal_italics=1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'jsformatter'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#excludes = ['branches', 'index']
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_theme='palenight'
 
 let g:palenight_termcolors=256
@@ -136,6 +141,10 @@ set wildmenu
 set noswapfile
 set nowritebackup
 set nobackup		" do not keep a backup file, use versions instead
+
+set updatetime=300
+set shortmess+=c
+
 
 set history=1024
 set vb
@@ -407,6 +416,38 @@ augroup vimrc_dart
   au FileType dart nnoremap <leader>fd :FlutterSplit<cr>
 augroup END
 
+let g:asyncrun_mode="term"
+nnoremap <leader>r :call CompileRun()<CR>
+
+func! CompileRun()
+  exec 'w'
+  if &filetype == 'sh'
+		exec "AsyncRun -mode=term -rows=8 -focus=0 sh %"
+	elseif &filetype == 'html'
+		exec "!open % &"
+	elseif &filetype == 'go'
+		exec "AsyncRun -mode=term -rows=8 -focus=0 go run %"
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
+	elseif &filetype == 'vim'
+		exec "source %"
+	elseif &filetype == 'javascript'
+		exec 'AsyncRun -mode=term -pos=bottom -rows=10 node "$(VIM_FILEPATH)"'
+  elseif &filetype == 'rust'
+    exec  'AsyncRun -mode=term -pos=bottom -rows=10 cargo run "$(VIM_FILEPATH)"'
+ elseif &filetype == 'typescript'
+    exec 'AsyncRun -mode=term -pos=bottom -rows=10 ts-node --skip-project "$(VIM_FILEPATH)"'
+	else
+    echo "Not supported filetype:" . " " . &filetype
+	endif
+endfunc
+
+"augroup code_runner
+"  au!
+"  au FileType javascript nnoremap <leader>r :AsyncRun -mode=term -pos=bottom -rows=10 node "$(VIM_FILEPATH)"<cr>
+"augroup END
+
+
 let g:go_gocode_propose_source = 1
 inoremap <C-d> <C-X><C-F>
 
@@ -487,6 +528,11 @@ noremap <leader>c :bd<CR>
 " LazyGit
 " ---------------------------------------------
 nnoremap <silent> <leader>lg :LazyGit<CR>
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating window
+let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
+let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
 
 
 
@@ -505,6 +551,7 @@ endif
 " LeaderF
 " ----------------------------------------------------
 let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_ShortcutB = '<C-B>'
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_HideHelp = 1
@@ -535,6 +582,8 @@ nnoremap <silent> <leader><space> :noh<cr>
 
 nnoremap <leader>ev  :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+
+let g:asyncrun_open = 6
 
 " Theme settings
 " =============================================
@@ -587,3 +636,6 @@ hi def link Lf_hl_popup_inputText StatusLine
 hi def link Lf_hl_popup_window Pmenu
 hi def link Lf_hl_popup_blank StatusLine
 "hi Visual  guifg=#000000 guibg=#FFFFFF gui=none
+
+" Use persistent history.
+set undofile

@@ -1,7 +1,7 @@
 {
   //"coc.preferences.formatOnType": true,
-  //"diagnostic.errorSign": "✗",
-  //"diagnostic.warningSign": "⚡",
+  "diagnostic.errorSign": "✗",
+  "diagnostic.warningSign": "⚡",
   "npm.binPath": "pnpm",
 
   "diagnostic.refreshOnInsertMode": true,
@@ -18,15 +18,14 @@
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
-
-  //"coc.preferences.diagnostic.errorSign": "✗",
-  //"coc.preferences.diagnostic.warningSign": "⚡",
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
 
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": true,
 
   "tsserver.enable": true,
-  //"tsserver.orgnizeImportOnSave": false,
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "tsserver.enableJavascript": false,
   "typescript.updateImportsOnFileMove.enable": false,
@@ -57,12 +56,12 @@
     //  "filetypes": ["rust"],
     //  "rootPatterns": ["Cargo.toml"]
     //},
-    "golang": {
-      "command": "gopls",
-      "args": [],
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
-    }
+    //"golang": {
+    //  "command": "gopls",
+    //  "args": [],
+    //  "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+    //  "filetypes": ["go"]
+    //}
   },
 
   "coc.preferences.formatOnSaveFiletypes": [
