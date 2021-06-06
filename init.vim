@@ -191,12 +191,14 @@ nnoremap <leader>. :lcd %:p:h<CR>
 "
 " coc-pairs
 autocmd FileType rust let b:coc_pairs_disabled = ["'"]
+
 " yats
 let g:yats_host_keyword = 1
 
 " vim-go
 let g:go_def_mode='gopls'
 let g:go_addtags_transform = "snakecase"
+
 "map <C-n> :cnext<CR>
 "map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
@@ -204,7 +206,6 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
-
 
 autocmd FileType rust nmap <leader>r  :Cargo run<cr>
 autocmd FileType rust nmap <leader>c  :Cargo check<cr>
@@ -265,8 +266,6 @@ let g:EasyMotion_smartcase = 1
 
 " Plugins
 " -----------------------------------------------------------------------
-let g:leetcode_solution_filetype = "rust"
-
 " vim-preview
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
@@ -376,18 +375,6 @@ let g:ale_sign_warning = '⚡'
 "let g:ale_echo_msg_warning_str = 'W'
 
 
-" vim-fugitive
-" ---------------------------------------------
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gr :Gread<CR>
-nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <leader>go :Gbrowse<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gac :Gcommit -a -v<CR>
-nnoremap <leader>gl :silent! Glog<CR>
-
 " ultisnips
 let g:UltiSnipsExpandTrigger="<C-x>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
@@ -417,35 +404,18 @@ augroup vimrc_dart
 augroup END
 
 let g:asyncrun_mode="term"
-nnoremap <leader>r :call CompileRun()<CR>
+let g:asyncrun_open = 8
 
-func! CompileRun()
-  exec 'w'
-  if &filetype == 'sh'
-		exec "AsyncRun -mode=term -rows=8 -focus=0 sh %"
-	elseif &filetype == 'html'
-		exec "!open % &"
-	elseif &filetype == 'go'
-		exec "AsyncRun -mode=term -rows=8 -focus=0 go run %"
-	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
-	elseif &filetype == 'vim'
-		exec "source %"
-	elseif &filetype == 'javascript'
-		exec 'AsyncRun -mode=term -pos=bottom -rows=10 node "$(VIM_FILEPATH)"'
-  elseif &filetype == 'rust'
-    exec  'AsyncRun -mode=term -pos=bottom -rows=10 cargo run "$(VIM_FILEPATH)"'
- elseif &filetype == 'typescript'
-    exec 'AsyncRun -mode=term -pos=bottom -rows=10 ts-node --skip-project "$(VIM_FILEPATH)"'
-	else
-    echo "Not supported filetype:" . " " . &filetype
-	endif
-endfunc
+augroup code_runner
+  au!
+  au FileType javascript nnoremap <leader>r :AsyncRun -focus=0 -mode=term -pos=bottom -rows=8 node "$(VIM_FILEPATH)"<cr>
+  au FileType rust nnoremap <leader>r :AsyncRun -focus=0 -mode=term -pos=bottom -rows=8 cargo run "$(VIM_FILEPATH)"<cr>
+  au FileType typescript nnoremap <leader>r :AsyncRun -focus=0 -mode=term -pos=bottom -rows=8 ts-node --skip-project "$(VIM_FILEPATH)"<cr>
+augroup END
 
-"augroup code_runner
-"  au!
-"  au FileType javascript nnoremap <leader>r :AsyncRun -mode=term -pos=bottom -rows=10 node "$(VIM_FILEPATH)"<cr>
-"augroup END
+"au FileType qf nnoremap q : q!<CR>
+"au FileType terminal nnoremap q : q!<CR>
+nnoremap q : q!<CR>
 
 
 let g:go_gocode_propose_source = 1
@@ -551,7 +521,7 @@ endif
 " LeaderF
 " ----------------------------------------------------
 let g:Lf_ShortcutF = '<C-P>'
-let g:Lf_ShortcutB = '<C-B>'
+let g:Lf_ShortcutB = '<C-I>'
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_HideHelp = 1
@@ -582,8 +552,6 @@ nnoremap <silent> <leader><space> :noh<cr>
 
 nnoremap <leader>ev  :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-
-let g:asyncrun_open = 6
 
 " Theme settings
 " =============================================
