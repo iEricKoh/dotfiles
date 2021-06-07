@@ -13,9 +13,10 @@ inoremap <silent><expr> <TAB>
 inoremap <expr> <C-J> pumvisible() ? "\<C-n>" : "\<C-J>"
 inoremap <expr> <C-K> pumvisible() ? "\<C-p>" : "\<C-K>"
 
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -39,6 +40,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
 
 
 " Remap for rename current word
@@ -104,11 +106,13 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 "nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 let s:coc_extensions = [
       \ 'coc-json', 'coc-prettier',
@@ -116,7 +120,8 @@ let s:coc_extensions = [
       \ 'coc-gocode',
       \ 'coc-tsserver', 'coc-html',
       \ 'coc-highlight', 'coc-snippets',
-      \ 'coc-rls', 'coc-explorer'
+      \ 'coc-rls', 'coc-explorer',
+      \ 'coc-rust-analyzer'
 			\]
 
 for extension in s:coc_extensions

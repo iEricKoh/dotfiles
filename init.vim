@@ -1,12 +1,13 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+let g:deoplete#enable_at_startup = 1
+
 call plug#begin()
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'easymotion/vim-easymotion'
-  Plug 'pangloss/vim-javascript'
   Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'sheerun/vim-polyglot'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
@@ -18,7 +19,13 @@ call plug#begin()
   Plug 'Raimondi/delimitMate'
   Plug 'tpope/vim-surround'
   Plug 'skywind3000/asyncrun.vim'
+  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+  Plug 'Shougo/neosnippet-snippets'
 call plug#end()
+
 
 " coc.nvim
 " ----------------------------------------------------
@@ -143,6 +150,7 @@ set nowritebackup
 set nobackup		" do not keep a backup file, use versions instead
 
 set updatetime=300
+set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set shortmess+=c
 
 
@@ -377,8 +385,8 @@ let g:ale_sign_warning = '⚡'
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<C-x>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+"let g:UltiSnipsJumpForwardTrigger="<c-f>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 
 " dart-vim-plugin
@@ -552,6 +560,7 @@ nnoremap <silent> <leader><space> :noh<cr>
 
 nnoremap <leader>ev  :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
 " Theme settings
 " =============================================

@@ -2,18 +2,14 @@
   //"coc.preferences.formatOnType": true,
   "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "⚡",
-  "npm.binPath": "pnpm",
-
+  //"npm.binPath": "pnpm",
   "diagnostic.refreshOnInsertMode": true,
-
   // Rust
   "rust-client.updateOnStartup": true,
   "rust-client.channel": "nightly",
   "rust.unstable_features": true,
   "rust.all_features": true,
-
   "eslint.autoFixOnSave": true,
-
   // TSLint
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": true,
@@ -21,21 +17,20 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.tabWidth": 2,
-
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": true,
-
-  "tsserver.enable": true,
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
-  "tsserver.enableJavascript": false,
+  "tsserver.enableJavascript": true,
+  "tsserver.disableAutomaticTypeAcquisition": false,
   "typescript.updateImportsOnFileMove.enable": false,
   "typescript.preferences.quoteStyle": "single",
   "javascript.preferences.quoteStyle": "single",
-
-  "dart.analysisExcludedFolders": ["vendor"],
-
-  "emmet.includeLanguages": { "javascript": "javascriptreact" },
-
+  "dart.analysisExcludedFolders": [
+    "vendor"
+  ],
+  //"emmet.includeLanguages": {
+  //  "javascript": "javascriptreact"
+  //},
   "languageserver": {
     //"dart": {
     //  "command": "dart",
@@ -63,7 +58,6 @@
     //  "filetypes": ["go"]
     //}
   },
-
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "Markdown",
@@ -76,12 +70,9 @@
     "rust",
     "dart"
   ],
-
   "flutter.provider.hot-reload": true,
   "flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
-
   "explorer.position": "right"
-
   //"go.alternateTools": {
   //  "go-langserver": "gopls", // or bingo
   //},
