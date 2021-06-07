@@ -552,42 +552,7 @@ let g:Lf_PreviewResult = {
   \ 'Rg': 1,
   \ 'Gtags': 0
   \}
-
-noremap <leader>h :LeaderfSelf<cr>
-
-"" Clean search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
-
-nnoremap <leader>ev  :split $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
-
-" Theme settings
-" =============================================
-"let g:dracula_italic = 0
-let g:rehash256 = 1
-"let g:dracula_colorterm=0
-set background=dark
-"let g:tsuquyomi_shortest_import_path = 1
-"hi Cursor ctermfg=17 ctermbg=NONE cterm=NONE guifg=#282a36 guibg=NONE gui=NONE
-"hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
-"hi LineNr ctermfg=246 ctermbg=NONE cterm=NONE guifg=#909194 guibg=NONE gui=NONE
-"hi SpecialKey ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
-"hi NonText ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
-"hi Pmenu ctermfg=145 ctermbg=NONE cterm=NONE guifg=#ABB2BF guibg=NONE gui=NONE
-"hi! link Identifier DraculaGreen
-highlight link CocErrorFloat         Identifier
-
-vnoremap <silent> <leader>fs :! esformatter<CR>
-let g:jsx_ext_required = 0
-let g:jsx_pragma_required = 1
-
-"set wildmenu
-"set wildmode=full
-"set pumblend=10
-"set winblend=100
 let g:Lf_StlColorscheme = 'airline'
-let g:Lf_HideHelp = 1
 let g:Lf_PopupShowStatusline=0
 let g:Lf_PopupShowFoldcolumn = 0
 "let g:Lf_PopupColorscheme = 'gruvbox_material'
@@ -612,6 +577,38 @@ let g:Lf_WildIgnore = {
 hi def link Lf_hl_popup_inputText StatusLine
 hi def link Lf_hl_popup_window Pmenu
 hi def link Lf_hl_popup_blank StatusLine
+
+noremap <leader>h :LeaderfSelf<cr>
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
+
+nnoremap <leader>ev  :split $MYVIMRC<cr>
+"nnoremap <leader>sv :source $MYVIMRC<CR>
+au! BufWritePost $MYVIMRC source % " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
+
+" Theme settings
+" =============================================
+let g:rehash256 = 1
+set background=dark
+"let g:tsuquyomi_shortest_import_path = 1
+"hi Cursor ctermfg=17 ctermbg=NONE cterm=NONE guifg=#282a36 guibg=NONE gui=NONE
+"hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
+"hi LineNr ctermfg=246 ctermbg=NONE cterm=NONE guifg=#909194 guibg=NONE gui=NONE
+"hi SpecialKey ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
+"hi NonText ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NONE
+"hi Pmenu ctermfg=145 ctermbg=NONE cterm=NONE guifg=#ABB2BF guibg=NONE gui=NONE
+"hi! link Identifier DraculaGreen
+highlight link CocErrorFloat         Identifier
+
+vnoremap <silent> <leader>fs :! esformatter<CR>
+let g:jsx_ext_required = 0
+let g:jsx_pragma_required = 1
+
+"set wildmenu
+"set wildmode=full
+"set pumblend=10
+"set winblend=100
 "hi Visual  guifg=#000000 guibg=#FFFFFF gui=none
 
 " Use persistent history.
