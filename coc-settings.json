@@ -9,8 +9,9 @@
   "rust-client.channel": "nightly",
   "rust.unstable_features": true,
   "rust.all_features": true,
-  "eslint.autoFixOnSave": true,
   // TSLint
+  "eslint.autoFixOnSave": true,
+  "eslint.format.enable": true,
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
@@ -22,9 +23,11 @@
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "tsserver.enableJavascript": true,
   "tsserver.disableAutomaticTypeAcquisition": false,
+  "typescript.format.enabled": true,
+  "javascript.format.enabled": true,
   "typescript.updateImportsOnFileMove.enable": false,
   "typescript.preferences.quoteStyle": "single",
-  "javascript.preferences.quoteStyle": "single",
+  "tsserver.tsdk": "/opt/homebrew/lib/node_modules/typescript/lib",
   "dart.analysisExcludedFolders": [
     "vendor"
   ],

@@ -15,6 +15,7 @@ call plug#begin()
   Plug 'kdheepak/lazygit.nvim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
   Plug 'drewtempelmeyer/palenight.vim'
   Plug 'Raimondi/delimitMate'
   Plug 'tpope/vim-surround'
@@ -294,7 +295,8 @@ if !isdirectory(s:gutentags_cache_dir)
     silent! call mkdir(s:gutentags_cache_dir, 'p')
 endif
 
-"command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
@@ -401,14 +403,18 @@ let dart_style_guide = 2
 "autocmd FileType dart nnoremap <leader>H :FlutterHotRestart<cr>
 "autocmd FileType dart nnoremap <leader>dh :FlutterSplit<cr>
 "autocmd FileType dart nnoremap <leader>dv :FlutterVSplit<cr>
+
 augroup vimrc_dart
   au!
-  au FileType dart nnoremap <leader>fa :FlutterRun<cr>
-  au FileType dart nnoremap <leader>fq :FlutterQuit<cr>
-  au FileType dart nnoremap <leader>fr :FlutterHotReload<cr>
-  au FileType dart nnoremap <leader>fR :FlutterHotRestart<cr>
-  au FileType dart nnoremap <leader>fD :FlutterVisualDebug<cr>
-  au FileType dart nnoremap <leader>fd :FlutterSplit<cr>
+  au FileType dart nnoremap <leader>la :CocCommand flutter.run<cr>
+  au FileType dart nnoremap <leader>lq :CocCommand flutter.dev.quit<cr>
+  au FileType dart nnoremap <leader>lh :CocCommand flutter.dev.hotReload<cr>
+  au FileType dart nnoremap <leader>lH :CocCommand flutter.dev.hotRestart<cr>
+  au FileType dart nnoremap <leader>ld :CocCommand flutter.dev.openDevLog<cr>
+  au FileType dart nnoremap <leader>lc :CocCommand flutter.dev.clearDevLog<cr>
+  au FileType dart nnoremap <leader>le :CocCommand flutter.emulators<cr>
+  "au FileType dart nnoremap <leader>fD :FlutterVisualDebug<cr>
+  "au FileType dart nnoremap <leader>fd :FlutterSplit<cr>
 augroup END
 
 let g:asyncrun_mode="term"
@@ -423,7 +429,7 @@ augroup END
 
 "au FileType qf nnoremap q : q!<CR>
 "au FileType terminal nnoremap q : q!<CR>
-nnoremap q : q!<CR>
+nnoremap q : q<CR>
 
 
 let g:go_gocode_propose_source = 1

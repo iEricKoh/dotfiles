@@ -19,7 +19,17 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+"nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+nnoremap <silent> <expr> K (coc#float#has_float() ?
+    \ ":call coc#float#close_all()<CR>" :
+    \     ":call <SID>show_documentation()<CR>")
+
+nnoremap <silent> <expr> <C-k> (exists('w:float') ?
+    \ ":call coc#float#close_all()<CR>" :
+    \ coc#float#has_float() ?
+    \     ":call coc#float#jump()<CR>" :
+    \     ":call <SID>show_documentation()<CR>")
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

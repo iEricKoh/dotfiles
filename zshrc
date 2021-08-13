@@ -56,7 +56,8 @@ export PATH="$PATH:/Users/eric/development/flutter/bin"
 export DB_USER=postgres
 export DB_NAME=baopals_backend_development
 export DB_PASS=postgres
-export RDS_PASSWORD=redis
+#export RDS_PASSWORD=redis
+export RDS_PASSWORD=
 
 #export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 #export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
@@ -85,3 +86,5 @@ export NVM_DIR="$HOME/.nvm"
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export TERM=xterm-256color
+
+eval "$(rbenv init -)"
