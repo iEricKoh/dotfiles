@@ -123,14 +123,14 @@ let g:coc_snippet_prev = '<c-k>'
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
+"", 'coc-prettier',
 let s:coc_extensions = [
-      \ 'coc-json', 'coc-prettier',
+      \ 'coc-json',
       \ 'coc-css', 'coc-eslint', 'coc-emmet',
       \ 'coc-gocode',
       \ 'coc-tsserver', 'coc-html',
       \ 'coc-highlight', 'coc-snippets',
-      \ 'coc-rls', 'coc-explorer',
+      \ 'coc-rls',
       \ 'coc-rust-analyzer'
 			\]
 

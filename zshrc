@@ -38,6 +38,9 @@ zinit for \
     light-mode pick"async.zsh" src"pure.zsh" \
                 sindresorhus/pure
 
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+
+
 zinit ice from"gh-r" as"program"
 zinit load junegunn/fzf-bin
 
@@ -67,7 +70,12 @@ export RDS_PASSWORD=
 #export GEM_HOME=$HOME/.gem
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export PATH="$PATH":"$HOME/development/flutter/.pub-cache/bin"
+export PATH="$PATH":"$HOME/.local/bin"
 
 export GOPATH="${HOME}/go"
 #export GOROOT="$(brew --prefix golang)/libexec"
@@ -79,12 +87,19 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/Users/eric/.deno/bin:$PATH"
 export PATH="${HOME}/Library/Android/sdk/platform-tools:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+#export PYTHON=$HOME/.pyenv/versions/2.7.18/bin/python
+#export NODE_GYP_FORCE_PYTHON=$HOME/.pyenv/versions/2.7.18/bin/python
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+#[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export TERM=xterm-256color
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+#export CHROME_EXECUTABLE="/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
 
 eval "$(rbenv init -)"
+
+eval "$(starship init zsh)"

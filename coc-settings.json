@@ -4,6 +4,7 @@
   "diagnostic.warningSign": "⚡",
   //"npm.binPath": "pnpm",
   "diagnostic.refreshOnInsertMode": true,
+
   // Rust
   "rust-client.updateOnStartup": true,
   "rust-client.channel": "nightly",
@@ -12,12 +13,17 @@
   // TSLint
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
-  "prettier.eslintIntegration": true,
-  "prettier.tslintIntegration": true,
-  "prettier.stylelintIntegration": true,
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.tabWidth": 2,
+
+  //"tailwindCSS.enable": true,
+  // "tailwindCSS.includeLanguages": { 
+  //   "plaintext": "javascript",
+  //   "html": "HTML"
+  // },
+
+
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": true,
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
@@ -28,13 +34,50 @@
   "typescript.updateImportsOnFileMove.enable": false,
   "typescript.preferences.quoteStyle": "single",
   "tsserver.tsdk": "/opt/homebrew/lib/node_modules/typescript/lib",
-  "dart.analysisExcludedFolders": [
-    "vendor"
-  ],
+  "dart.analysisExcludedFolders": ["vendor"],
   //"emmet.includeLanguages": {
   //  "javascript": "javascriptreact"
   //},
   "languageserver": {
+    "tailwind-lsp": {
+      "command": "tailwindcss-language-server",
+      "args": ["--stdio"],
+
+      "filetypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+      ],
+
+      "rootPatterns": [
+        "tailwind.config.js",
+        "tailwind.config.ts",
+        "postcss.config.js",
+        "postcss.config.ts",
+        "package.json",
+        "node_modules",
+        ".git"
+      ],
+      "settings": {
+        "tailwindCSS": {
+          "validate": true,
+          "lint": {
+            "cssConflict": "warning",
+            "invalidApply": "error",
+            "invalidScreen": "error",
+            "invalidVariant": "error",
+            "invalidConfigPath": "error",
+            "invalidTailwindDirective": "error",
+            "recommendedVariantOrder": "warning"
+          },
+          "classAttributes": ["class", "className", "classList", "ngClass"],
+          "experimental": {}
+        }
+      }
+    }
+
+    
     //"dart": {
     //  "command": "dart",
     //  "args": [
@@ -73,8 +116,8 @@
     "rust",
     "dart"
   ],
+  "dart.enableSdkFormatter": true,
   "flutter.provider.hot-reload": true,
-  "flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
   "explorer.position": "right"
   //"go.alternateTools": {
   //  "go-langserver": "gopls", // or bingo
