@@ -19,6 +19,9 @@ end
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Jump out of pair
+keymap("i", "<S-Tab>", "<C-o>A", opt)
+
 keymap("c", "<C-j>", "<C-n>", {
 	noremap = false,
 })
@@ -203,13 +206,13 @@ pluginKeys.cmp = function(cmp)
 			end
 		end, { "i", "s" }),
 
-		["<S-Tab>"] = cmp.mapping(function()
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-				feedkey("<Plug>(vsnip-jump-prev)", "")
-			end
-		end, { "i", "s" }),
+		-- ["<S-Tab>"] = cmp.mapping(function()
+		-- 	if cmp.visible() then
+		-- 		cmp.select_prev_item()
+		-- 	elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+		-- 		feedkey("<Plug>(vsnip-jump-prev)", "")
+		-- 	end
+		-- end, { "i", "s" }),
 		-- end of super Tab
 	}
 end
@@ -244,6 +247,8 @@ pluginKeys.lsp = function(mapbuf)
 	mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
 	mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
 	mapbuf("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opt)
+	mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+
 	mapbuf("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opt)
 	mapbuf("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opt)
 	mapbuf("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opt)
