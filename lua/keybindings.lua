@@ -128,6 +128,18 @@ pluginKeys.cmp = function(cmp)
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 
+		["<C-p>"] = function(fallback)
+			for i = 1, 5 do
+				cmp.mapping.select_prev_item()(nil)
+			end
+		end,
+
+		["<C-n>"] = function(fallback)
+			for i = 1, 5 do
+				cmp.mapping.select_next_item()(nil)
+			end
+		end,
+
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
 
@@ -145,9 +157,6 @@ pluginKeys.cmp = function(cmp)
 			behavior = cmp.ConfirmBehavior.Replace,
 		}),
 		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-
-		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 
 		["<C-l>"] = cmp.mapping(function(_)
 			if vim.fn["vsnip#available"](1) == 1 then
