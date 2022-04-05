@@ -1,3 +1,6 @@
+local Terminal = require("toggleterm.terminal").Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float", dir = "git_dir" })
+
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
@@ -213,9 +216,14 @@ pluginKeys.cmp = function(cmp)
 end
 
 -- Telescope
+function _lazygit_toggle()
+	lazygit:toggle()
+end
+
 nkeymap("<C-p>", ":Telescope find_files<CR>")
 nkeymap("<C-g>", ":Telescope live_grep<CR>")
 nkeymap("<C-i>", ":Telescope buffers<CR>")
+nkeymap("<leader>g", "<cmd>lua _lazygit_toggle()<CR>")
 
 pluginKeys.telescope = {
 	i = {
