@@ -110,6 +110,15 @@ keymap("n", "<leader>u", "<cmd>lua require'telescope'.extensions.flutter.command
 -- navigation
 nkeymap("<C-h>", ":BufferLineCyclePrev<CR>")
 nkeymap("<C-l>", ":BufferLineCycleNext<CR>")
+nkeymap("<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>")
+nkeymap("<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>")
+nkeymap("<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>")
+nkeymap("<leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>")
+nkeymap("<leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>")
+nkeymap("<leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>")
+nkeymap("<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>")
+nkeymap("<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>")
+nkeymap("<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>")
 -- exit
 nkeymap("<leader>bl", ":BufferLineCloseRight<CR>")
 nkeymap("<leader>bh", ":BufferLineCloseLeft<CR>")
