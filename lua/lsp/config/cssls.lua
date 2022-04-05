@@ -6,7 +6,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local opts = {
 	settings = {
 		css = {
-			validate = true,
+			validate = false,
 		},
 		less = {
 			validate = true,

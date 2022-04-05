@@ -1,4 +1,3 @@
--- place this in one of your configuration file(s)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
@@ -102,6 +101,17 @@ pluginKeys.nvim_tree = {
 		action = "refresh",
 	},
 }
+
+-- trouble
+-- Lua
+nkeymap("<leader>xx", "<cmd>Trouble<cr>")
+nkeymap("<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>")
+nkeymap("<leader>xd", "<cmd>Trouble document_diagnostics<cr>")
+nkeymap("<leader>xl", "<cmd>Trouble loclist<cr>")
+nkeymap("<leader>xq", "<cmd>Trouble quickfix<cr>")
+nkeymap("gR", "<cmd>Trouble lsp_references<cr>")
+nkeymap("<C-j>", "<cmd>lua require'trouble'.next({skip_groups = true, jump = true})<cr>")
+nkeymap("<C-k>", "<cmd>lua require'trouble'.previous({skip_groups = true, jump = true})<cr>")
 
 -- flutter-tools
 keymap("n", "<leader>u", "<cmd>lua require'telescope'.extensions.flutter.commands()<cr>", opt)

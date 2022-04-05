@@ -8,6 +8,7 @@ local servers = {
 	tailwindcss = require("lsp.config.tailwindcss"),
 	cssls = require("lsp.config.cssls"),
 	html = require("lsp.config.html"),
+	dartls = require("lsp.config.dartls"),
 	-- remark_ls = require("lsp.lang.markdown"),
 }
 
