@@ -9,9 +9,7 @@
     ~/.zshrc:
     ~/.editorconfig:
     ~/.ackrc:
-    ~/.config/nvim/init.vim: init.vim
-    ~/.config/nvim/coc.vim: coc.vim
-    ~/.config/nvim/coc-settings.json: coc-settings.json
+    ~/.config/nvim/init.lua: init.lua
     ~/.tern-config:
 
 - shell:
