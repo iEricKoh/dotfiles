@@ -106,7 +106,6 @@ pluginKeys.nvim_tree = {
 }
 
 -- trouble
--- Lua
 nkeymap("<leader>xx", "<cmd>Trouble<cr>")
 nkeymap("<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>")
 nkeymap("<leader>xd", "<cmd>Trouble document_diagnostics<cr>")
@@ -117,7 +116,7 @@ nkeymap("<C-j>", "<cmd>lua require'trouble'.next({skip_groups = true, jump = tru
 nkeymap("<C-k>", "<cmd>lua require'trouble'.previous({skip_groups = true, jump = true})<cr>")
 
 -- flutter-tools
-keymap("n", "<leader>u", "<cmd>lua require'telescope'.extensions.flutter.commands()<cr>", opt)
+keymap("n", "U", "<cmd>lua require'telescope'.extensions.flutter.commands()<cr>", opt)
 
 -- buffer-line
 -- navigation
