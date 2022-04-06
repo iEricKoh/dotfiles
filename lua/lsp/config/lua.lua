@@ -1,11 +1,9 @@
-require("lsp.config.common")
-
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-local opts = {
-	settings = {
+local enhance_server_opts = function(options)
+	options.settings = {
 		Lua = {
 			runtime = {
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -27,18 +25,7 @@ local opts = {
 				enable = false,
 			},
 		},
-	},
-	flags = {
-		debounce_text_changes = 150,
-	},
-	on_attach = function(client, bufnr)
-		on_attach(client, bufnr)
-		vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-	end,
-}
+	}
+end
 
-return {
-	on_setup = function(server)
-		server:setup(opts)
-	end,
-}
+return { enhance_server_opts = enhance_server_opts }

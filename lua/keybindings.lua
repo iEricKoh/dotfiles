@@ -4,11 +4,30 @@ local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "floa
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-local keymap = vim.api.nvim_set_keymap
 local opt = { noremap = true, silent = true }
 
-local function nkeymap(key, map)
-	keymap("n", key, map, opt)
+local map = function(key)
+	-- get the extra options
+	local opts = { noremap = false }
+	for i, v in pairs(key) do
+		if type(i) == "string" then
+			opts[i] = v
+		end
+	end
+
+	-- basic support for buffer-scoped keybindings
+	local buffer = opts.buffer
+	opts.buffer = nil
+
+	if buffer then
+		vim.api.nvim_buf_set_keymap(0, key[1], key[2], key[3], opts)
+	else
+		vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
+	end
+end
+
+local function nkeymap(key, action)
+	map({ "n", key, action, opt })
 end
 
 -- Modes
@@ -20,22 +39,14 @@ end
 --   command_mode = "c",
 
 -- Jump out of pair
-keymap("i", "<S-Tab>", "<C-o>A", opt)
+map({ "i", "<S-Tab>", "<C-o>A", opt })
 
-keymap("c", "<C-j>", "<C-n>", {
-	noremap = false,
-})
-keymap("c", "<C-k>", "<C-p>", {
-	noremap = false,
-})
+map({ "c", "<C-j>", "<C-n>" })
+map({ "c", "<C-k>", "<C-p>" })
 
 -- ctrl + /
-keymap("n", "<C-_>", "gcc", {
-	noremap = false,
-})
-keymap("v", "<C-_>", "gcc", {
-	noremap = false,
-})
+map({ "n", "<C-_>", "gcc" })
+map({ "v", "<C-_>", "gcc" })
 
 nkeymap("<C-j>", "4j")
 nkeymap("<C-k>", "4k")
@@ -43,23 +54,23 @@ nkeymap("<C-u>", "9k")
 nkeymap("<C-d>", "9j")
 
 -- magic search
-keymap("n", "/", "/\\v", {
+map({ "n", "/", "/\\v", {
 	noremap = true,
 	silent = false,
-})
-keymap("v", "/", "/\\v", {
+} })
+map({ "v", "/", "/\\v", {
 	noremap = true,
 	silent = false,
-})
+} })
 
 -- indent
-keymap("v", "<", "<gv", opt)
-keymap("v", ">", ">gv", opt)
+map({ "v", "<", "<gv", opt })
+map({ "v", ">", ">gv", opt })
 -- moving selected line
-keymap("v", "J", ":move '>+1<CR>gv-gv", opt)
-keymap("v", "K", ":move '<-2<CR>gv-gv", opt)
+map({ "v", "J", ":move '>+1<CR>gv-gv", opt })
+map({ "v", "K", ":move '<-2<CR>gv-gv", opt })
 
-keymap("v", "p", '"_dP', opt)
+map({ "v", "p", '"_dP', opt })
 
 -- exit
 nkeymap("q", ":q<CR>")
@@ -82,8 +93,8 @@ nkeymap("so", "<C-w>o")
 local pluginKeys = {}
 
 -- nvim-tree
-keymap("n", "<C-e>", "<cmd>lua require'nvim-tree'.toggle(false, true)<cr>", opt)
-keymap("n", "<C-y>", "<cmd>lua require'nvim-tree'.find_file(true)<cr>", opt)
+map({ "n", "<C-e>", "<cmd>lua require'nvim-tree'.toggle(false, true)<cr>", opt })
+map({ "n", "<C-y>", "<cmd>lua require'nvim-tree'.find_file(true)<cr>", opt })
 
 pluginKeys.nvim_tree = {
 	{
@@ -119,7 +130,7 @@ nkeymap("<C-j>", "<cmd>lua require'trouble'.next({skip_groups = true, jump = tru
 nkeymap("<C-k>", "<cmd>lua require'trouble'.previous({skip_groups = true, jump = true})<cr>")
 
 -- flutter-tools
-keymap("n", "U", "<cmd>lua require'telescope'.extensions.flutter.commands()<cr>", opt)
+map({ "n", "U", "<cmd>lua require'telescope'.extensions.flutter.commands()<cr>", opt })
 
 -- buffer-line
 -- navigation
@@ -152,13 +163,13 @@ pluginKeys.cmp = function(cmp)
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 
-		["<C-p>"] = function(fallback)
+		["<C-p>"] = function(_)
 			for i = 1, 5 do
 				cmp.mapping.select_prev_item()(nil)
 			end
 		end,
 
-		["<C-n>"] = function(fallback)
+		["<C-n>"] = function(_)
 			for i = 1, 5 do
 				cmp.mapping.select_next_item()(nil)
 			end
@@ -246,28 +257,25 @@ pluginKeys.telescope = {
 pluginKeys.lsp = function(mapbuf)
 	mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
 	mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
-	mapbuf("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opt)
+	mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<cr>", opt)
 	mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-
-	mapbuf("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opt)
+	mapbuf("n", "K", "<cmd>Lspsaga hover_doc<cr>", opt)
 	mapbuf("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opt)
 	mapbuf("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opt)
-	mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
 	mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
 	-- diagnostic
-	mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
+	-- mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
 	mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
 	mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
 	mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 
-	-- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-	-- mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+	mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
 	-- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
-	-- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
+	mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
 	-- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
 	-- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
 	-- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
-	-- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
+	mapbuf("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
 end
 
 pluginKeys.lsp_tsserver = function(mapbuf)
@@ -277,44 +285,21 @@ pluginKeys.lsp_tsserver = function(mapbuf)
 end
 
 -- Hop
-keymap(
-	"n",
-	"f",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>",
-	{}
-)
-keymap(
-	"n",
-	"F",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>",
-	{}
-)
-keymap(
+map({ "n", "f", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>" })
+map({ "n", "F", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>" })
+map({
 	"o",
 	"f",
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, inclusive_jump = true })<cr>",
-	{}
-)
-keymap(
+})
+map({
 	"o",
 	"F",
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, inclusive_jump = true })<cr>",
-	{}
-)
-keymap(
-	"",
-	"t",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>",
-	{}
-)
-keymap(
-	"",
-	"T",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>",
-	{}
-)
+})
+map({ "", "t", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>" })
+map({ "", "T", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>" })
 
--- nkeymap('gd', ':lua vim.lsp.buf.definition()<cr>')
 -- nkeymap('gD', ':lua vim.lsp.buf.declaration()<cr>')
 -- nkeymap('gi', ':lua vim.lsp.buf.implementation()<cr>')
 -- nkeymap('gw', ':lua vim.lsp.buf.document_symbol()<cr>')

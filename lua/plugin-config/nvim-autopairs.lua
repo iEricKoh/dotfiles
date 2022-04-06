@@ -1,4 +1,6 @@
 require("nvim-autopairs").setup({
+	disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input" },
+
 	check_ts = true,
 	ts_config = {
 		lua = { "string" }, -- it will not add a pair on that treesitter node

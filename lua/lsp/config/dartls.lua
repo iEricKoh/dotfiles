@@ -1,23 +1,11 @@
-require("lsp.config.common")
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-local opts = {
-	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
-
+local enhance_server_opts = function(options)
+	options.on_attach = function(client, bufnr)
 		require("flutter-tools").setup({
 			lsp = {
-				capabilities = capabilities,
+				capabilities = vim.lsp.protocol.make_client_capabilities(),
 			},
 		})
-		-- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-	end,
-}
+	end
+end
 
-return {
-	on_setup = function(server)
-		server:setup(opts)
-	end,
-}
+return { enhance_server_opts = enhance_server_opts }

@@ -1,20 +1,9 @@
-require("lsp.config.common")
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local opts = {
-	settings = {
+local enhance_server_opts = function(options)
+	options.settings = {
 		tailwindCSS = {
 			rootFontSize = 10,
 		},
-	},
-	capabilities = capabilities,
-	on_attach = on_attach,
-}
+	}
+end
 
-return {
-	on_setup = function(server)
-		server:setup(opts)
-	end,
-}
+return { enhance_server_opts = enhance_server_opts }

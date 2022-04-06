@@ -1,3 +1,5 @@
+local set = vim.opt
+
 vim.cmd([[colorscheme tokyonight]])
 
 vim.g.encoding = "UTF-8"
@@ -8,24 +10,20 @@ vim.o.sidescrolloff = 8
 
 vim.wo.number = true
 vim.wo.relativenumber = true
-
+vim.wo.wrap = false
 vim.wo.cursorline = true
-
 vim.wo.signcolumn = "yes"
 
-vim.o.tabstop = 2
-vim.bo.tabstop = 2
-vim.o.softtabstop = 2
+set.tabstop = 2
+set.softtabstop = 2
 vim.o.shiftround = true
 
-vim.o.shiftwidth = 2
-vim.bo.shiftwidth = 2
+set.shiftwidth = 2
+set.shiftwidth = 2
 
-vim.o.expandtab = true
-vim.bo.expandtab = true
+set.expandtab = true
 
-vim.o.autoindent = true
-vim.bo.autoindent = true
+set.autoindent = true
 vim.o.smartindent = true
 
 vim.o.ignorecase = true
@@ -36,10 +34,7 @@ vim.o.incsearch = true
 
 vim.o.cmdheight = 1
 
-vim.o.autoread = true
-vim.bo.autoread = true
-
-vim.wo.wrap = false
+set.autoread = true
 
 vim.o.whichwrap = "<,>,[,]"
 
@@ -62,7 +57,7 @@ vim.g.completeopt = "menu,menuone,noselect,noinsert"
 
 vim.o.background = "dark"
 vim.o.termguicolors = true
-vim.opt.termguicolors = true
+set.termguicolors = true
 
 -- vim.o.list = true
 -- vim.o.listchars = "space:·,tab:··"
@@ -77,4 +72,8 @@ vim.o.showtabline = 2
 
 vim.o.showmode = false
 
-vim.opt.clipboard = "unnamedplus"
+set.clipboard = "unnamedplus"
+
+set.undofile = true
+
+set.wildignore = ""
