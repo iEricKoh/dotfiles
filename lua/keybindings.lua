@@ -235,7 +235,7 @@ end
 
 nkeymap("<C-p>", ":Telescope find_files<CR>")
 nkeymap("<C-g>", ":Telescope live_grep<CR>")
-nkeymap("<C-i>", ":Telescope buffers<CR>")
+nkeymap("<C-n>", ":Telescope buffers<CR>")
 nkeymap("<leader>g", "<cmd>lua _lazygit_toggle()<CR>")
 
 pluginKeys.telescope = {
