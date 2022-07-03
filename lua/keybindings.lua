@@ -45,8 +45,8 @@ map({ "c", "<C-j>", "<C-n>" })
 map({ "c", "<C-k>", "<C-p>" })
 
 -- ctrl + /
-map({ "n", "<C-_>", "gcc" })
-map({ "v", "<C-_>", "gcc" })
+map({ "n", "<C-/>", "gcc" })
+map({ "v", "<C-/>", "gcc" })
 
 nkeymap("<C-j>", "4j")
 nkeymap("<C-k>", "4k")
@@ -236,6 +236,7 @@ end
 nkeymap("<C-p>", ":Telescope find_files<CR>")
 nkeymap("<C-g>", ":Telescope live_grep<CR>")
 nkeymap("<C-n>", ":Telescope buffers<CR>")
+nkeymap("<C-i>", ":Telescope buffers<CR>")
 nkeymap("<leader>g", "<cmd>lua _lazygit_toggle()<CR>")
 
 pluginKeys.telescope = {
