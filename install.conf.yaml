@@ -12,8 +12,6 @@
     ~/.config/nvim/init.lua: init.lua
     ~/.config/nvim/lua: lua
     ~/.tern-config:
-    ~/.alacritty.yml:
-    ~/.config/zellij/config.yaml: zellij.yaml
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/kitty/theme.conf: kitty-theme.conf
 
