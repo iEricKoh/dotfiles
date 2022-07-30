@@ -7,27 +7,27 @@ vim.g.maplocalleader = ","
 local opt = { noremap = true, silent = true }
 
 local map = function(key)
-	-- get the extra options
-	local opts = { noremap = false }
-	for i, v in pairs(key) do
-		if type(i) == "string" then
-			opts[i] = v
-		end
-	end
+  -- get the extra options
+  local opts = { noremap = false }
+  for i, v in pairs(key) do
+    if type(i) == "string" then
+      opts[i] = v
+    end
+  end
 
-	-- basic support for buffer-scoped keybindings
-	local buffer = opts.buffer
-	opts.buffer = nil
+  -- basic support for buffer-scoped keybindings
+  local buffer = opts.buffer
+  opts.buffer = nil
 
-	if buffer then
-		vim.api.nvim_buf_set_keymap(0, key[1], key[2], key[3], opts)
-	else
-		vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
-	end
+  if buffer then
+    vim.api.nvim_buf_set_keymap(0, key[1], key[2], key[3], opts)
+  else
+    vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
+  end
 end
 
 local function nkeymap(key, action)
-	map({ "n", key, action, opt })
+  map({ "n", key, action, opt })
 end
 
 -- Modes
@@ -55,12 +55,12 @@ nkeymap("<C-d>", "9j")
 
 -- magic search
 map({ "n", "/", "/\\v", {
-	noremap = true,
-	silent = false,
+  noremap = true,
+  silent = false,
 } })
 map({ "v", "/", "/\\v", {
-	noremap = true,
-	silent = false,
+  noremap = true,
+  silent = false,
 } })
 
 -- indent
@@ -97,26 +97,26 @@ map({ "n", "<C-e>", "<cmd>lua require'nvim-tree'.toggle(false, true)<cr>", opt }
 map({ "n", "<C-y>", "<cmd>lua require'nvim-tree'.find_file(true)<cr>", opt })
 
 pluginKeys.nvim_tree = {
-	{
-		key = "v",
-		action = "vsplit",
-	},
-	{
-		key = "h",
-		action = "split",
-	},
-	{
-		key = "i",
-		action = "toggle_ignored",
-	},
-	{
-		key = ".",
-		action = "toggle_dotfiles",
-	},
-	{
-		key = "<F5>",
-		action = "refresh",
-	},
+  {
+    key = "v",
+    action = "vsplit",
+  },
+  {
+    key = "h",
+    action = "split",
+  },
+  {
+    key = "i",
+    action = "toggle_ignored",
+  },
+  {
+    key = ".",
+    action = "toggle_dotfiles",
+  },
+  {
+    key = "<F5>",
+    action = "refresh",
+  },
 }
 
 -- trouble
@@ -151,86 +151,86 @@ nkeymap("<leader>bh", ":BufferLineCloseLeft<CR>")
 nkeymap("<leader>bc", ":BufferLinePickClose<CR>")
 
 pluginKeys.cmp = function(cmp)
-	local feedkey = function(key, mode)
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-	end
-	local has_words_before = function()
-		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-	end
+  local feedkey = function(key, mode)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+  end
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
 
-	return {
-		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+  return {
+    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 
-		["<C-p>"] = function(_)
-			for i = 1, 5 do
-				cmp.mapping.select_prev_item()(nil)
-			end
-		end,
+    ["<C-p>"] = function(_)
+      for i = 1, 5 do
+        cmp.mapping.select_prev_item()(nil)
+      end
+    end,
 
-		["<C-n>"] = function(_)
-			for i = 1, 5 do
-				cmp.mapping.select_next_item()(nil)
-			end
-		end,
+    ["<C-n>"] = function(_)
+      for i = 1, 5 do
+        cmp.mapping.select_next_item()(nil)
+      end
+    end,
 
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
 
-		["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 
-		["<C-e>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
+    ["<C-e>"] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
 
-		-- Accept currently selected item. If none selected, `select` first item.
-		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm({
-			select = true,
-			behavior = cmp.ConfirmBehavior.Replace,
-		}),
-		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    -- Accept currently selected item. If none selected, `select` first item.
+    -- Set `select` to `false` to only confirm explicitly selected items.
+    ["<CR>"] = cmp.mapping.confirm({
+      select = true,
+      behavior = cmp.ConfirmBehavior.Replace,
+    }),
+    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 
-		["<C-l>"] = cmp.mapping(function(_)
-			if vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<Plug>(vsnip-expand-or-jump)", "")
-			end
-		end, { "i", "s" }),
-		["<C-h>"] = cmp.mapping(function()
-			if vim.fn["vsnip#jumpable"](-1) == 1 then
-				feedkey("<Plug>(vsnip-jump-prev)", "")
-			end
-		end, { "i", "s" }),
+    ["<C-l>"] = cmp.mapping(function(_)
+      if vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      end
+    end, { "i", "s" }),
+    ["<C-h>"] = cmp.mapping(function()
+      if vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, { "i", "s" }),
 
-		-- super Tab
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<Plug>(vsnip-expand-or-jump)", "")
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-			end
-		end, { "i", "s" }),
+    -- super Tab
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, { "i", "s" }),
 
-		-- ["<S-Tab>"] = cmp.mapping(function()
-		-- 	if cmp.visible() then
-		-- 		cmp.select_prev_item()
-		-- 	elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-		-- 		feedkey("<Plug>(vsnip-jump-prev)", "")
-		-- 	end
-		-- end, { "i", "s" }),
-		-- end of super Tab
-	}
+    -- ["<S-Tab>"] = cmp.mapping(function()
+    -- 	if cmp.visible() then
+    -- 		cmp.select_prev_item()
+    -- 	elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+    -- 		feedkey("<Plug>(vsnip-jump-prev)", "")
+    -- 	end
+    -- end, { "i", "s" }),
+    -- end of super Tab
+  }
 end
 
 -- Telescope
 function _lazygit_toggle()
-	lazygit:toggle()
+  lazygit:toggle()
 end
 
 nkeymap("<C-p>", ":Telescope find_files<CR>")
@@ -240,63 +240,63 @@ nkeymap("<C-i>", ":Telescope buffers<CR>")
 nkeymap("<leader>g", "<cmd>lua _lazygit_toggle()<CR>")
 
 pluginKeys.telescope = {
-	i = {
-		-- menu navigation
-		["<C-j>"] = "move_selection_next",
-		["<C-k>"] = "move_selection_previous",
-		["<C-n>"] = "move_selection_next",
-		["<C-p>"] = "move_selection_previous",
-		-- history
-		["<Down>"] = "cycle_history_next",
-		["<Up>"] = "cycle_history_prev",
-		-- preview window navigation
-		["<C-u>"] = "preview_scrolling_up",
-		["<C-d>"] = "preview_scrolling_down",
-	},
+  i = {
+    -- menu navigation
+    ["<C-j>"] = "move_selection_next",
+    ["<C-k>"] = "move_selection_previous",
+    ["<C-n>"] = "move_selection_next",
+    ["<C-p>"] = "move_selection_previous",
+    -- history
+    ["<Down>"] = "cycle_history_next",
+    ["<Up>"] = "cycle_history_prev",
+    -- preview window navigation
+    ["<C-u>"] = "preview_scrolling_up",
+    ["<C-d>"] = "preview_scrolling_down",
+  },
 }
 
 pluginKeys.lsp = function(mapbuf)
-	mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
-	mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
-	mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<cr>", opt)
-	mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-	mapbuf("n", "K", "<cmd>Lspsaga hover_doc<cr>", opt)
-	mapbuf("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opt)
-	mapbuf("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opt)
-	mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
-	-- diagnostic
-	-- mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-	mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
-	mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-	mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+  mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
+  mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
+  mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<cr>", opt)
+  mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+  mapbuf("n", "K", "<cmd>Lspsaga hover_doc<cr>", opt)
+  mapbuf("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opt)
+  mapbuf("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opt)
+  mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
+  -- diagnostic
+  -- mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
+  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
+  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
+  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 
-	mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-	-- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
-	mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-	-- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
-	-- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
-	-- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
-	mapbuf("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
+  mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+  -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
+  mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
+  -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
+  -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
+  -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
+  mapbuf("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
 end
 
 pluginKeys.lsp_tsserver = function(mapbuf)
-	mapbuf("n", "gs", ":TSLspOrganize<CR>", opt)
-	mapbuf("n", "gr", ":TSLspRenameFile<CR>", opt)
-	mapbuf("n", "gi", ":TSLspImportAll<CR>", opt)
+  mapbuf("n", "gs", ":TSLspOrganize<CR>", opt)
+  mapbuf("n", "gr", ":TSLspRenameFile<CR>", opt)
+  mapbuf("n", "gi", ":TSLspImportAll<CR>", opt)
 end
 
 -- Hop
 map({ "n", "f", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>" })
 map({ "n", "F", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>" })
 map({
-	"o",
-	"f",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, inclusive_jump = true })<cr>",
+  "o",
+  "f",
+  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, inclusive_jump = true })<cr>",
 })
 map({
-	"o",
-	"F",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, inclusive_jump = true })<cr>",
+  "o",
+  "F",
+  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, inclusive_jump = true })<cr>",
 })
 map({ "", "t", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>" })
 map({ "", "T", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>" })

@@ -75,28 +75,27 @@ export RDS_PASSWORD=
 
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
-export PATH="$PATH":"$HOME/development/flutter/.pub-cache/bin"
-export PATH="$PATH":"$HOME/.local/bin"
+# export PATH="$PATH":"$HOME/development/flutter/.pub-cache/bin"
+# export PATH="$PATH":"$HOME/.local/bin"
 
-export GOPATH="${HOME}/go"
+#export GOPATH="${HOME}/go"
 #export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+#export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 #export PATH="$PATH:${HOME}/Library/Android/sdk/platform-tools"
 #export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/library"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+#export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
-export PATH="/Users/eric/.deno/bin:$PATH"
-export PATH="${HOME}/Library/Android/sdk/platform-tools:$PATH"
+#export PATH="/Users/eric/.deno/bin:$PATH"
+#export PATH="${HOME}/Library/Android/sdk/platform-tools:$PATH"
 
 #export PYTHON=$HOME/.pyenv/versions/2.7.18/bin/python
 #export NODE_GYP_FORCE_PYTHON=$HOME/.pyenv/versions/2.7.18/bin/python
 
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
-export TERM=xterm-256color
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+#export TERM=xterm-256color
+#export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 #export CHROME_EXECUTABLE="/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
 
 # eval "$(rbenv init -)"
@@ -111,3 +110,5 @@ export PATH="$PNPM_HOME:$PATH"
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # export FZF_DEFAULT_COMMAND='fd --type f'
+export NODE_OPTIONS=--openssl-legacy-provider
+
