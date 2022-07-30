@@ -9,7 +9,7 @@ local servers = {
 	cssls = require("lsp.config.cssls"),
 	html = {},
 	dartls = require("lsp.config.dartls"),
-	denols = require("lsp.config.denols"),
+	-- denols = require("lsp.config.denols"),
 	-- remark_ls = require("lsp.lang.markdown"),
 }
 

@@ -103,3 +103,8 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 eval "$(rbenv init -)"
 
 eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/eric/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
