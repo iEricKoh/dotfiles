@@ -14,6 +14,8 @@
     ~/.tern-config:
     ~/.alacritty.yml:
     ~/.config/zellij/config.yaml: zellij.yaml
+    ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.config/kitty/theme.conf: kitty-theme.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
