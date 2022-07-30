@@ -1,6 +1,19 @@
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/Users/eric/.zshrc'
 
@@ -8,28 +21,44 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-zinit for \
-    light-mode  zsh-users/zsh-autosuggestions \
-    light-mode  zdharma/fast-syntax-highlighting \
-                zdharma/history-search-multi-word \
-    light-mode pick"async.zsh" src"pure.zsh" \
-                sindresorhus/pure
+zinit ice lucid wait='1'
+zinit light skywind3000/z.lua
 
+zinit ice lucid wait='0' atinit='zpcompinit'
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice lucid wait="0" atload='_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+
+zi ice wait lucid atload'_zsh_autosuggest_start'
+zi light zsh-users/zsh-autosuggestions
+
+# zinit for \
+#                 zdharma/history-search-multi-word \
+#     light-mode pick"async.zsh" src"pure.zsh" \
+#                 sindresorhus/pure
+
+zinit ice lucid wait='1'
 zinit snippet OMZ::plugins/git/git.plugin.zsh
-
 
 zinit ice from"gh-r" as"program"
 zinit load junegunn/fzf-bin
 
+# zinit ice lucid wait='0'
 zinit light zsh-users/zsh-history-substring-search
+
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+
+zi light DarrinTisdale/zsh-aliases-exa
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# alias vim="nvim"
-# alias vi="nvim"
-# alias oldvim="vim"
-#alias npm="pnpm"
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="vim"
+alias npm="pnpm"
 
 export PATH="$PATH:/Users/eric/development/flutter/bin"
 
@@ -42,14 +71,11 @@ export RDS_PASSWORD=
 #export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 #export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
-. /opt/homebrew/opt/asdf/asdf.sh
+# . /opt/homebrew/opt/asdf/asdf.sh
 
-#export GEM_HOME=$HOME/.gem
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$PATH":"$HOME/development/flutter/.pub-cache/bin"
 export PATH="$PATH":"$HOME/.local/bin"
@@ -67,17 +93,13 @@ export PATH="${HOME}/Library/Android/sdk/platform-tools:$PATH"
 #export PYTHON=$HOME/.pyenv/versions/2.7.18/bin/python
 #export NODE_GYP_FORCE_PYTHON=$HOME/.pyenv/versions/2.7.18/bin/python
 
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-#[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export TERM=xterm-256color
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 #export CHROME_EXECUTABLE="/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 eval "$(starship init zsh)"
 
@@ -85,3 +107,7 @@ eval "$(starship init zsh)"
 export PNPM_HOME="/Users/eric/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# export FZF_DEFAULT_COMMAND='fd --type f'

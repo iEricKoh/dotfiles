@@ -10,6 +10,7 @@
     ~/.editorconfig:
     ~/.ackrc:
     ~/.config/nvim/init.lua: init.lua
+    ~/.config/nvim/lua: lua
     ~/.tern-config:
 
 - shell:
