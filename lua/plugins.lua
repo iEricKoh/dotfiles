@@ -59,12 +59,12 @@ packer.startup(function()
 
   use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
-  -- use({
-  --   "numToStr/Comment.nvim",
-  --   config = function()
-  --     require("Comment").setup()
-  --   end,
-  -- })
+  use({
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  })
 
   -- Lsp related
   use({
