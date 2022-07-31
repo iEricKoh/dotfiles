@@ -112,3 +112,5 @@ export PATH="$PNPM_HOME:$PATH"
 # export FZF_DEFAULT_COMMAND='fd --type f'
 export NODE_OPTIONS=--openssl-legacy-provider
 
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
