@@ -1,5 +1,8 @@
 local set = vim.opt
 
+vim.g.tokyonight_transparent = true
+vim.g.tokyonight_transparent_sidebar = true
+
 vim.cmd([[colorscheme tokyonight]])
 
 vim.g.encoding = "UTF-8"
