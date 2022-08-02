@@ -114,3 +114,10 @@ export NODE_OPTIONS=--openssl-legacy-provider
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

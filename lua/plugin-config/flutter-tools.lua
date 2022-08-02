@@ -10,12 +10,12 @@ require("flutter-tools").setup({
 	-- 	-- end,
 	-- },
 	lsp = {
-		color = {
-			enabled = true,
-			background = true,
-			foreground = true,
-			virtual_text = true,
-		},
+		-- color = {
+		-- 	enabled = true,
+		-- 	background = true,
+		-- 	foreground = true,
+		-- 	virtual_text = true,
+		-- },
 		capabilities = capabilities,
 	},
 })
