@@ -59,6 +59,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias oldvim="vim"
 alias npm="pnpm"
+alias npx="pnpx"
 
 export PATH="$PATH:/Users/eric/development/flutter/bin"
 
@@ -121,3 +122,4 @@ export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export HOMEBREW_INSTALL_FROM_API=1

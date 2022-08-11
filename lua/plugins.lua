@@ -47,6 +47,24 @@ packer.startup(function()
 
   use("mfussenegger/nvim-dap")
   use("nvim-telescope/telescope-dap.nvim")
+  use({
+    "mattn/emmet-vim",
+    setup = function() -- load stuff before the plugin is loaded
+      -- vim.g.user_emmet_leader_key = '<c-m>'
+
+      vim.g.user_emmet_settings = {
+        indent_blockelement = 1,
+      }
+    end,
+  })
+
+  use({
+    "kosayoda/nvim-lightbulb",
+    requires = "antoinemadec/FixCursorHold.nvim",
+    config = function()
+      require("nvim-lightbulb").setup({ autocmd = { enabled = true } })
+    end,
+  })
 
   use({
     "ethanholz/nvim-lastplace",
@@ -119,7 +137,11 @@ packer.startup(function()
 
   -- lsp UI
   use("onsails/lspkind-nvim")
-  use("tami5/lspsaga.nvim")
+  -- use("tami5/lspsaga.nvim")
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+  })
 
   use({ "p00f/nvim-ts-rainbow" })
 
