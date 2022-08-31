@@ -1,4 +1,3 @@
-local lspsaga = require("lspsaga")
 local lspkind = require("lspkind")
 
 vim.diagnostic.config({

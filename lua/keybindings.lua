@@ -1,6 +1,9 @@
+local saga = require("lspsaga")
+
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float", dir = "git_dir" })
-local action = require("lspsaga.action")
+
+saga.init_lsp_saga()
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
@@ -258,25 +261,16 @@ pluginKeys.telescope = {
 
 pluginKeys.lsp = function(mapbuf)
   mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
+
   mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
-  -- mapbuf("v", "<leader>ca", "<cmd>Lspsaga range_code_action<CR>", opt)
   vim.keymap.set("v", "<leader>ca", "<cmd>Lspsaga range_code_action<CR>", { silent = true })
+  -- mapbuf("v", "<leader>ca", "<cmd>Lspsaga range_code_action<CR>", opt)
 
   -- mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<cr>", opt)
-  -- mapbuf("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opt)
-  mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<cr>", opt)
+  mapbuf("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opt)
+  -- mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<cr>", opt)
   mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
   mapbuf("n", "K", "<cmd>Lspsaga hover_doc<cr>", opt)
-  -- mapbuf("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opt)
-  -- mapbuf("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opt)
-
-  vim.keymap.set("n", "<C-f>", function()
-    action.smart_scroll_with_saga(1)
-  end, { silent = true })
-  -- scroll up hover doc
-  vim.keymap.set("n", "<C-b>", function()
-    action.smart_scroll_with_saga(-1)
-  end, { silent = true })
 
   mapbuf("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opt)
   -- diagnostic
