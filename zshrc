@@ -21,7 +21,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-zinit ice lucid wait='1'
+zinit ice lucid wait='0'
 zinit light skywind3000/z.lua
 
 zinit ice lucid wait='0' atinit='zpcompinit'
