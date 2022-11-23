@@ -1,7 +1,23 @@
 local set = vim.opt
 
-vim.g.tokyonight_transparent = true
-vim.g.tokyonight_transparent_sidebar = true
+-- vim.g.tokyonight_transparent = true
+-- vim.g.tokyonight_transparent_sidebar = true
+require("tokyonight").setup({
+  style = "storm",
+
+  transparent = true,
+  styles = {
+    -- Style to be applied to different syntax groups
+    -- Value is any valid attr-list value `:help attr-list`
+    comments = "italic",
+    keywords = "italic",
+    functions = "NONE",
+    variables = "NONE",
+    -- Background styles. Can be "dark", "transparent" or "normal"
+    sidebars = "transparent", -- style for sidebars, see below
+    floats = "dark", -- style for floating windows
+  },
+})
 
 vim.cmd([[colorscheme tokyonight]])
 

@@ -78,7 +78,7 @@ export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 
 # export PATH="$PATH":"$HOME/development/flutter/.pub-cache/bin"
-# export PATH="$PATH":"$HOME/.local/bin"
+export PATH="$PATH":"$HOME/.local/bin"
 
 #export GOPATH="${HOME}/go"
 #export GOROOT="$(brew --prefix golang)/libexec"
@@ -125,3 +125,5 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export HOMEBREW_INSTALL_FROM_API=1
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/spherical-entry-279802-firebase-adminsdk-9xxgd-98ceddd0fc.json"

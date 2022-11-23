@@ -1,4 +1,5 @@
 -- Auto installing packer.nvim
+-- https://github.com/VonHeikemen/lsp-zero.nvim
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
