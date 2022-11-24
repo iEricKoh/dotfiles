@@ -3,7 +3,7 @@
       create: true
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.zshrc:
@@ -14,6 +14,8 @@
     ~/.tern-config:
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/kitty/theme.conf: kitty-theme.conf
+    ~/.config/kitty/search.py: search.py
+    ~/.config/kitty/scroll_mark.py: scroll_mark.py
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]
