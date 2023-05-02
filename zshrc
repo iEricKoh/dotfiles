@@ -67,15 +67,10 @@ export DB_USER=postgres
 export DB_NAME=baopals_backend_development
 export DB_PASS=postgres
 #export RDS_PASSWORD=redis
-export RDS_PASSWORD=
+export RDS_PASSWORD=redis
 
-#export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-#export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-
-# . /opt/homebrew/opt/asdf/asdf.sh
-
-export GEM_HOME=$HOME/.gem
-export PATH=$GEM_HOME/bin:$PATH
+#export GEM_HOME=$HOME/.gem
+#export PATH=$GEM_HOME/bin:$PATH
 
 # export PATH="$PATH":"$HOME/development/flutter/.pub-cache/bin"
 export PATH="$PATH":"$HOME/.local/bin"
@@ -108,18 +103,22 @@ export PNPM_HOME="/Users/eric/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # export FZF_DEFAULT_COMMAND='fd --type f'
-export NODE_OPTIONS=--openssl-legacy-provider
+#export NODE_OPTIONS=--openssl-legacy-provider
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export LDFLAGS="-L/opt/homebrew/opt/readline/lib:$LDFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/readline/include:$CPPFLAGS"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig:$PKG_CONFIG_PATH"
+export optflags="-Wno-error=implicit-function-declaration"
+export LDFLAGS="-L/opt/homebrew/opt/libffi/lib:$LDFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include:$CPPFLAGS"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig:$PKG_CONFIG_PATH"
+
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export HOMEBREW_INSTALL_FROM_API=1
@@ -127,3 +126,5 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/spherical-entry-279802-firebase-adminsdk-9xxgd-98ceddd0fc.json"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh

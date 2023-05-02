@@ -11,27 +11,27 @@ vim.g.maplocalleader = ","
 local opt = { noremap = true, silent = true }
 
 local map = function(key)
-	-- get the extra options
-	local opts = { noremap = false }
-	for i, v in pairs(key) do
-		if type(i) == "string" then
-			opts[i] = v
-		end
-	end
+  -- get the extra options
+  local opts = { noremap = false }
+  for i, v in pairs(key) do
+    if type(i) == "string" then
+      opts[i] = v
+    end
+  end
 
-	-- basic support for buffer-scoped keybindings
-	local buffer = opts.buffer
-	opts.buffer = nil
+  -- basic support for buffer-scoped keybindings
+  local buffer = opts.buffer
+  opts.buffer = nil
 
-	if buffer then
-		vim.api.nvim_buf_set_keymap(0, key[1], key[2], key[3], opts)
-	else
-		vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
-	end
+  if buffer then
+    vim.api.nvim_buf_set_keymap(0, key[1], key[2], key[3], opts)
+  else
+    vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
+  end
 end
 
 local function nkeymap(key, action)
-	map({ "n", key, action, opt })
+  map({ "n", key, action, opt })
 end
 
 -- Modes
@@ -59,12 +59,12 @@ nkeymap("<C-d>", "9j")
 
 -- magic search
 map({ "n", "/", "/\\v", {
-	noremap = true,
-	silent = false,
+  noremap = true,
+  silent = false,
 } })
 map({ "v", "/", "/\\v", {
-	noremap = true,
-	silent = false,
+  noremap = true,
+  silent = false,
 } })
 
 -- indent
@@ -97,30 +97,30 @@ nkeymap("so", "<C-w>o")
 local pluginKeys = {}
 
 -- nvim-tree
-map({ "n", "<C-e>", "<cmd>lua require'nvim-tree'.toggle(false, true)<cr>", opt })
+map({ "n", "<C-e>", ":NvimTreeToggle<cr>", opt })
 map({ "n", "<C-y>", "<cmd>lua require'nvim-tree'.find_file(true)<cr>", opt })
 
 pluginKeys.nvim_tree = {
-	{
-		key = "v",
-		action = "vsplit",
-	},
-	{
-		key = "h",
-		action = "split",
-	},
-	{
-		key = "i",
-		action = "toggle_ignored",
-	},
-	{
-		key = ".",
-		action = "toggle_dotfiles",
-	},
-	{
-		key = "<F5>",
-		action = "refresh",
-	},
+  {
+    key = "v",
+    action = "vsplit",
+  },
+  {
+    key = "h",
+    action = "split",
+  },
+  {
+    key = "i",
+    action = "toggle_ignored",
+  },
+  {
+    key = ".",
+    action = "toggle_dotfiles",
+  },
+  {
+    key = "<F5>",
+    action = "refresh",
+  },
 }
 
 -- trouble
@@ -156,7 +156,7 @@ nkeymap("<leader>bc", ":BufferLinePickClose<CR>")
 
 -- Telescope
 function _lazygit_toggle()
-	lazygit:toggle()
+  lazygit:toggle()
 end
 
 nkeymap("<C-p>", ":Telescope find_files<CR>")
@@ -166,33 +166,33 @@ nkeymap("<C-i>", ":Telescope buffers<CR>")
 nkeymap("<leader>g", "<cmd>lua _lazygit_toggle()<CR>")
 
 pluginKeys.telescope = {
-	i = {
-		-- menu navigation
-		["<C-j>"] = "move_selection_next",
-		["<C-k>"] = "move_selection_previous",
-		["<C-n>"] = "move_selection_next",
-		["<C-p>"] = "move_selection_previous",
-		-- history
-		["<Down>"] = "cycle_history_next",
-		["<Up>"] = "cycle_history_prev",
-		-- preview window navigation
-		["<C-u>"] = "preview_scrolling_up",
-		["<C-d>"] = "preview_scrolling_down",
-	},
+  i = {
+    -- menu navigation
+    ["<C-j>"] = "move_selection_next",
+    ["<C-k>"] = "move_selection_previous",
+    ["<C-n>"] = "move_selection_next",
+    ["<C-p>"] = "move_selection_previous",
+    -- history
+    ["<Down>"] = "cycle_history_next",
+    ["<Up>"] = "cycle_history_prev",
+    -- preview window navigation
+    ["<C-u>"] = "preview_scrolling_up",
+    ["<C-d>"] = "preview_scrolling_down",
+  },
 }
 
 -- Hop
 map({ "n", "f", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>" })
 map({ "n", "F", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>" })
 map({
-	"o",
-	"f",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, inclusive_jump = true })<cr>",
+  "o",
+  "f",
+  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, inclusive_jump = true })<cr>",
 })
 map({
-	"o",
-	"F",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, inclusive_jump = true })<cr>",
+  "o",
+  "F",
+  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, inclusive_jump = true })<cr>",
 })
 map({ "", "t", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>" })
 map({ "", "T", "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>" })
