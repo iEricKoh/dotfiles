@@ -97,31 +97,8 @@ nkeymap("so", "<C-w>o")
 local pluginKeys = {}
 
 -- nvim-tree
-map({ "n", "<C-e>", ":NvimTreeToggle<cr>", opt })
+map({ "n", "<C-e>", ":NvimTreeFindFile<cr>", opt })
 map({ "n", "<C-y>", "<cmd>lua require'nvim-tree'.find_file(true)<cr>", opt })
-
-pluginKeys.nvim_tree = {
-  {
-    key = "v",
-    action = "vsplit",
-  },
-  {
-    key = "h",
-    action = "split",
-  },
-  {
-    key = "i",
-    action = "toggle_ignored",
-  },
-  {
-    key = ".",
-    action = "toggle_dotfiles",
-  },
-  {
-    key = "<F5>",
-    action = "refresh",
-  },
-}
 
 -- trouble
 nkeymap("<leader>xx", "<cmd>Trouble<cr>")

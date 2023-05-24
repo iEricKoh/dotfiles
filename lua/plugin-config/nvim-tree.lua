@@ -1,46 +1,34 @@
-local status, nvim_tree = pcall(require, "nvim-tree")
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-if not status then
-	vim.notify("nvim-tree is not available.")
-	return
+vim.opt.termguicolors = true
+
+local function on_attach(bufnr)
+  local api = require("nvim-tree.api")
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  api.config.mappings.default_on_attach(bufnr)
+
+  vim.keymap.set("n", "v", api.node.open.vertical, opts("Open: Vertical Split"))
+  vim.keymap.set("n", "h", api.node.open.horizontal, opts("Open: Horizontal Split"))
+  vim.keymap.set("n", ".", api.tree.toggle_hidden_filter, opts("Toggle Dotfiles"))
+  vim.keymap.set("n", "i", api.tree.toggle_gitignore_filter, opts("Toggle Git Ignore"))
 end
 
-local list_keys = require("keybindings").nvim_tree
-
-nvim_tree.setup({
-	git = {
-		enable = false,
-	},
-	-- required for project plugin
-	update_cwd = true,
-	update_focused_file = {
-		enable = true,
-		update_cwd = true,
-	},
-	-- hiding dotfiles, node_modules
-	filters = {
-		dotfiles = true,
-		custom = { "node_modules" },
-	},
-	view = {
-		side = "right",
-		hide_root_folder = false,
-		mappings = {
-			custom_only = false,
-			list = list_keys,
-		},
-	},
-	actions = {
-		open_file = {
-			resize_window = true,
-			quit_on_open = false,
-		},
-	},
+require("nvim-tree").setup({
+  view = {
+    side = "right",
+  },
+  on_attach = on_attach,
 })
 
-vim.api.nvim_exec(
-	[[
-    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-  ]],
-	true
-)
+-- on_attach = function()
+--   local api = require("nvim-tree.api")
+--   vim.keymap.set("n", "v", api.node.open.vertical)
+--   vim.keymap.set("n", "h", api.node.open.horizontal)
+--   -- vim.keymap.set("n", ".", api.tree.toggle_hidden_filter)
+--   -- vim.keymap.set("n", "I", api.tree.toggle_gitignore_filter)
+-- end,
