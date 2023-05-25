@@ -6,13 +6,18 @@ end
 
 treesitter.setup({
   -- ensure_installed = "all",
-  ensure_installed = { "javascript", "lua", "json", "typescript", "kotlin" },
+  ensure_installed = { "javascript", "lua", "json", "typescript", "kotlin", "tsx", "css", "html", "scss" },
 
   ignore_install = { "php", "phpdoc" },
 
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
+  },
+
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
   },
 
   -- incremental_selection = {

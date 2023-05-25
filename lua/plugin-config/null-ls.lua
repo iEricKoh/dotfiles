@@ -11,11 +11,17 @@ null_ls.setup({
     diagnostics.eslint_d,
     code_actions.eslint_d,
 
-    formatting.prettier,
+    -- formatting.prettier,
+    formatting.prettier.with({
+      extra_args = { "--no-semi", "--single-quote", "--tab-width 2", "--print-width 200" },
+    }),
+    formatting.black.with({
+      extra_args = { "--fast" },
+    }),
     formatting.stylua,
     formatting.dart_format,
     formatting.rustfmt,
-    formatting.rustywind,
+    -- formatting.rustywind,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
