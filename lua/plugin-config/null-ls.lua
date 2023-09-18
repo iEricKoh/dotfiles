@@ -13,8 +13,9 @@ null_ls.setup({
 
     -- formatting.prettier,
     formatting.prettier.with({
-      extra_args = { "--no-semi", "--single-quote", "--tab-width 2", "--print-width 200" },
+      extra_args = { "--no-semi", "--tab-width 2", "--print-width 200" },
     }),
+    -- "--single-quote",
     formatting.black.with({
       extra_args = { "--fast" },
     }),
