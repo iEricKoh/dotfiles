@@ -8,9 +8,11 @@ return {
     servers = {
       eslint = {
         settings = {
+          -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
           workingDirectory = { mode = "auto" },
         },
       },
+      cssls = {},
       tailwindcss = {
         filetypes_exclude = { "markdown" },
       },
@@ -24,13 +26,6 @@ return {
             client.server_capabilities.documentFormattingProvider = false
           end
         end)
-      end,
-      tailwindcss = function(_, opts)
-        local tw = require("lspconfig.server_configurations.tailwindcss")
-        --- @param ft string
-        opts.filetypes = vim.tbl_filter(function(ft)
-          return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
-        end, tw.default_config.filetypes)
       end,
     },
   },

@@ -13,11 +13,11 @@ return {
       ["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
     })
 
-    opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" }, { name = "crates" } }))
+    opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
 
-    opts.formatting.format = function(entry, item)
-      format_kinds(entry, item) -- add icons
-      return require("tailwindcss-colorizer-cmp").formatter(entry, item)
-    end
+    -- opts.formatting.format = function(entry, item)
+    --   format_kinds(entry, item) -- add icons
+    --   return require("tailwindcss-colorizer-cmp").formatter(entry, item)
+    -- end
   end,
 }

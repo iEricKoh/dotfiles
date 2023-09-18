@@ -2,6 +2,21 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     -- change some options
+    keys = {
+      {
+        "<C-p>",
+        "<cmd>Telescope find_files<cr>",
+        desc = "Find Files",
+      },
+      {
+        "<C-g>",
+        "<cmd>Telescope live_grep<cr>",
+      },
+      {
+        "<C-n>",
+        "<cmd>Telescope buffers<cr>",
+      },
+    },
     opts = {
       defaults = {
         layout_strategy = "horizontal",
