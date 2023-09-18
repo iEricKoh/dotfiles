@@ -53,21 +53,6 @@ if true then
     -- change some telescope options and a keymap to browse plugin files
     {
       "nvim-telescope/telescope.nvim",
-      keys = {
-        {
-          "<C-p>",
-          "<cmd>Telescope find_files<cr>",
-          desc = "Find Files",
-        },
-        {
-          "<C-g>",
-          "<cmd>Telescope live_grep<cr>",
-        },
-        {
-          "<C-n>",
-          "<cmd>Telescope buffers<cr>",
-        },
-      },
       -- change some options
       opts = {
         defaults = {
@@ -141,28 +126,6 @@ if true then
         },
       },
     },
-
-    {
-      "goolord/alpha-nvim",
-
-      opts = function()
-        local dashboard = require("alpha.themes.dashboard")
-
-        local logo = [[
-	"  __      _",
-	"o'')}____//",
-	" `_/      )",
-	" (_(_/-(_/ ",
-
-  ]]
-
-        dashboard.section.header.val = vim.split(logo, "\n")
-
-        return dashboard
-      end,
-    },
-
-    { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 
     {
       "nvim-tree/nvim-tree.lua",
