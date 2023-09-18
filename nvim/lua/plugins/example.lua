@@ -146,6 +146,9 @@ if true then
 
     {
       "nvim-tree/nvim-tree.lua",
+      -- deactivate = function()
+      --   vim.cmd([[NvimTreeClose]])
+      -- end,
       opts = {
         view = {
           side = "right",
@@ -170,7 +173,7 @@ if true then
       },
 
       keys = {
-        { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer FileTree", remap = true },
+        { "<C-e>", "<cmd>NvimTreeFindFile<cr>", desc = "Explorer FileTree", remap = true },
       },
     },
   }
