@@ -142,13 +142,30 @@ if true then
       },
     },
 
+    {
+      "goolord/alpha-nvim",
+
+      opts = function()
+        local dashboard = require("alpha.themes.dashboard")
+
+        local logo = [[
+	"  __      _",
+	"o'')}____//",
+	" `_/      )",
+	" (_(_/-(_/ ",
+
+  ]]
+
+        dashboard.section.header.val = vim.split(logo, "\n")
+
+        return dashboard
+      end,
+    },
+
     { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 
     {
       "nvim-tree/nvim-tree.lua",
-      -- deactivate = function()
-      --   vim.cmd([[NvimTreeClose]])
-      -- end,
       opts = {
         view = {
           side = "right",
