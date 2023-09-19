@@ -3,13 +3,38 @@ return {
 
   opts = function(_, opts)
     local logo = [[
-"  __      _",
-"o'')}____//",
-" `_/      )",
-" (_(_/-(_/ ",
+                  / )
+  (\__/)         ( (
+  )    (          ) )
+={      }=       / /
+  )     `-------/ /
+  (               /
+  \              |
+  ,'\       ,    ,'
+  `-'\  ,---\   | \
+    _) )    `. \ /
+    (__/       ) )  
+              (_/
+    ]]
 
- ]]
+    --    local logo = [[
+    --                _,..._,m,
+    --              ,/'      '"";
+    --            /             ".
+    --          ,'mmmMMMMmm.      \
+    --        _/-"^^^^^"""%#%mm,   ;
+    --  ,m,_,'              "###)  ;,
+    --  (###%                 \#/  ;##mm.
+    --  ^#/  __        ___    ;  (######)
+    --    ;  //.\\     //.\\   ;   \####/
+    --  _; (#\"//     \\"/#)  ;  ,/
+    --  @##\ \##/   =   `"=" ,;mm/
+    --  `\##>.____,...,____,<####@
+    --                        ""'
+    --
+    -- ]]
 
-    opts.section.header.val = vim.split(logo, "\n", { trimempty = true })
+    opts.section.header.color = "red"
+    opts.section.header.val = vim.split(logo, "\n", { trimempty = true }) --+ vim.split(logo, "\n", { trimempty = true })
   end,
 }
