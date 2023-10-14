@@ -58,8 +58,8 @@ bindkey '^[[B' history-substring-search-down
 alias vim="nvim"
 alias vi="nvim"
 alias oldvim="vim"
-alias npm="pnpm"
-alias npx="pnpx"
+#alias npm="pnpm"
+#alias npx="pnpx"
 
 export PATH="$PATH:/Users/eric/development/flutter/bin"
 
@@ -126,7 +126,10 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/spherical-entry-279802-firebase-adminsdk-9xxgd-98ceddd0fc.json"
-export NODE_OPTIONS=--openssl-legacy-provider
+#export NODE_OPTIONS=--openssl-legacy-provider
 export TREE_SHAKE_ICONS=false
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# bun completions
+[ -s "/Users/eric/.bun/_bun" ] && source "/Users/eric/.bun/_bun"
