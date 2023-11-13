@@ -133,3 +133,6 @@ export TREE_SHAKE_ICONS=false
 
 # bun completions
 [ -s "/Users/eric/.bun/_bun" ] && source "/Users/eric/.bun/_bun"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

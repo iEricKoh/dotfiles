@@ -10,7 +10,6 @@
     ~/.editorconfig:
     ~/.ackrc:
     ~/.config/nvim: nvim
-    ~/.config/nvim/lua: lua
     ~/.tern-config:
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/kitty/theme.conf: kitty-theme.conf
