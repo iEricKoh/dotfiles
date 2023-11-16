@@ -12,6 +12,7 @@
     ~/.config/nvim: nvim
     ~/.tern-config:
     ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.config/kitty/kitty_search: kitty_search
     ~/.config/kitty/theme.conf: kitty-theme.conf
     ~/.config/kitty/search.py: search.py
     ~/.config/kitty/scroll_mark.py: scroll_mark.py
