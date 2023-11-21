@@ -3,6 +3,7 @@ return {
   opts = {
     view = {
       side = "right",
+      width = 35,
     },
     on_attach = function(bufnr)
       local api = require("nvim-tree.api")
