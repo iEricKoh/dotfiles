@@ -137,3 +137,4 @@ export TREE_SHAKE_ICONS=false
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 export BAT_THEME="TwoDark"
+export EDITOR="nvim"
