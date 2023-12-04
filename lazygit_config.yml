@@ -2,3 +2,7 @@ git:
   paging:
     colorArg: always
     useConfig: true
+os:
+  editPreset: "nvim"
+gui:
+  nerdFontsVersion: "3"
