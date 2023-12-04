@@ -12,6 +12,7 @@
     ~/.ackrc:
     ~/.config/nvim: nvim
     ~/.tern-config:
+    ~/Library/Application Support/lazygit/config.yml: lazygit_config.yml
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/kitty/kitty_search: kitty_search
     ~/.config/kitty/theme.conf: kitty-theme.conf
