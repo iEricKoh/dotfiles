@@ -11,7 +11,9 @@
 	required = true
 	clean = git-lfs clean -- %f
 [core]
-  pager = delta
+  #pager = delta
+	whitespace = cr-at-eol
+	autocrlf = input
 [interactive]
   diffFilter = delta --color-only
 [color]
