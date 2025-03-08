@@ -42,7 +42,7 @@ zinit ice lucid wait='1'
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
+# zinit load junegunn/fzf-bin
 
 # zinit ice lucid wait='0'
 zinit light zsh-users/zsh-history-substring-search
@@ -52,8 +52,8 @@ zinit light sindresorhus/pure
 
 zi light DarrinTisdale/zsh-aliases-exa
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
 
 alias vim="nvim"
 alias vi="nvim"
@@ -138,3 +138,7 @@ export TREE_SHAKE_ICONS=false
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 export BAT_THEME="TwoDark"
 export EDITOR="nvim"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
