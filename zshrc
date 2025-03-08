@@ -129,8 +129,6 @@ export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/spherical-entry-279802-fi
 #export NODE_OPTIONS=--openssl-legacy-provider
 export TREE_SHAKE_ICONS=false
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 # bun completions
 [ -s "/Users/eric/.bun/_bun" ] && source "/Users/eric/.bun/_bun"
 
@@ -142,3 +140,4 @@ export EDITOR="nvim"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+eval "$(mise activate zsh)"
